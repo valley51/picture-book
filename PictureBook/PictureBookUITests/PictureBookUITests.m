@@ -1,6 +1,6 @@
 //
-//  ______UITests.m
-//  儿童英语绘本UITests
+//  PictureBookUITests.m
+//  PictureBookUITests
 //
 //  Created by 陈松松 on 2018/4/17.
 //  Copyright © 2018年 zaoliedu. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface ______UITests : XCTestCase
+@interface PictureBookUITests : XCTestCase
 
 @end
 
-@implementation ______UITests
+@implementation PictureBookUITests
 
 - (void)setUp {
     [super setUp];
