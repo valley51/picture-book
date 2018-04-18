@@ -1,0 +1,44 @@
+//
+//  PictureBook.pch
+//  PictureBook
+//
+//  Created by 陈松松 on 2018/4/18.
+//  Copyright © 2018年 zaoliedu. All rights reserved.
+//
+
+#ifndef PictureBook_pch
+#define PictureBook_pch
+
+
+#ifdef __OBJC__
+/*自动布局*/
+// 定义这个常量，就可以不用在开发过程中使用"mas_"前缀。
+#define MAS_SHORTHAND
+// 定义这个常量，就可以让Masonry帮我们自动把基础数据类型的数据，自动装箱为对象类型。
+#define MAS_SHORTHAND_GLOBALS
+#import "Masonry.h"
+
+/*获取屏幕宽高*/
+#define  screenW [[UIScreen mainScreen]bounds].size.width
+#define  screenH [[UIScreen mainScreen]bounds].size.height
+
+/*获取图片资源*/
+#define kGetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
+
+/*自定义打印*/
+#ifdef DEBUG
+#define LRLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#else
+#define LRLog(...)
+#endif
+
+/*颜色*/
+#define RGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define RGBAColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(r)/255.0 blue:(r)/255.0 alpha:a]
+#define ClearColor [UIColor clearColor]
+#endif
+
+/*偏好设置*/
+#define USER_DEFAULT [NSUserDefaults standardUserDefaults]
+
+#endif /* PictureBook_pch */

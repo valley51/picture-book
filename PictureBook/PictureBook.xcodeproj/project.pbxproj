@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09A584BF8A44427787F80FD5 /* libPods-PictureBookUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4F451037241D8BD7735D3D /* libPods-PictureBookUITests.a */; };
+		570EFA477FBC2CE0A987C567 /* libPods-PictureBookTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9D49CB79CAB325DC329E81 /* libPods-PictureBookTests.a */; };
+		CDB20C6607EDC0BAE595C819 /* libPods-PictureBook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21D5AFCECF551082C5B37160 /* libPods-PictureBook.a */; };
 		DE2ECB0D2085F8C7009C4B36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB0C2085F8C7009C4B36 /* AppDelegate.m */; };
 		DE2ECB132085F8C7009C4B36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2ECB112085F8C7009C4B36 /* Main.storyboard */; };
 		DE2ECB152085F8C8009C4B36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2ECB142085F8C8009C4B36 /* Assets.xcassets */; };
@@ -14,6 +17,10 @@
 		DE2ECB1B2085F8C8009C4B36 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB1A2085F8C8009C4B36 /* main.m */; };
 		DE2ECB252085F8C8009C4B36 /* PictureBookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB242085F8C8009C4B36 /* PictureBookTests.m */; };
 		DE2ECB302085F8C8009C4B36 /* PictureBookUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB2F2085F8C8009C4B36 /* PictureBookUITests.m */; };
+		DE8B50232086E31200D3057E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8B50222086E31200D3057E /* RegisterViewController.m */; };
+		DE8B50272087373500D3057E /* ChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8B50262087373500D3057E /* ChooseViewController.m */; };
+		DE8B502A2087395E00D3057E /* ChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8B50292087395E00D3057E /* ChooseView.m */; };
+		DE8B502D20873B8000D3057E /* ChooseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8B502C20873B8000D3057E /* ChooseButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21D5AFCECF551082C5B37160 /* libPods-PictureBook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PictureBook.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9482C5F2970481BA39743E5C /* Pods-PictureBookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureBookUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureBookUITests/Pods-PictureBookUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AC85C626CEE9381DFF7EB760 /* Pods-PictureBookUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureBookUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureBookUITests/Pods-PictureBookUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AF4F451037241D8BD7735D3D /* libPods-PictureBookUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PictureBookUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0BFB72C0C40A3DD7965ECAD /* Pods-PictureBookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureBookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureBookTests/Pods-PictureBookTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CF9D49CB79CAB325DC329E81 /* libPods-PictureBookTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PictureBookTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D59B683B209CC93E753390D7 /* Pods-PictureBookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureBookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureBookTests/Pods-PictureBookTests.release.xcconfig"; sourceTree = "<group>"; };
+		DD491A539685A1E99A249E51 /* Pods-PictureBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureBook/Pods-PictureBook.release.xcconfig"; sourceTree = "<group>"; };
 		DE2ECB082085F8C7009C4B36 /* PictureBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2ECB0B2085F8C7009C4B36 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DE2ECB0C2085F8C7009C4B36 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -48,6 +63,16 @@
 		DE2ECB2B2085F8C8009C4B36 /* PictureBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictureBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2ECB2F2085F8C8009C4B36 /* PictureBookUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureBookUITests.m; sourceTree = "<group>"; };
 		DE2ECB312085F8C8009C4B36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE8B50212086E31200D3057E /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		DE8B50222086E31200D3057E /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		DE8B50242086E68600D3057E /* PictureBook.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureBook.pch; sourceTree = "<group>"; };
+		DE8B50252087373500D3057E /* ChooseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseViewController.h; sourceTree = "<group>"; };
+		DE8B50262087373500D3057E /* ChooseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseViewController.m; sourceTree = "<group>"; };
+		DE8B50282087395E00D3057E /* ChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseView.h; sourceTree = "<group>"; };
+		DE8B50292087395E00D3057E /* ChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseView.m; sourceTree = "<group>"; };
+		DE8B502B20873B8000D3057E /* ChooseButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseButton.h; sourceTree = "<group>"; };
+		DE8B502C20873B8000D3057E /* ChooseButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseButton.m; sourceTree = "<group>"; };
+		F0D34EFEE610D4350FAAE4E2 /* Pods-PictureBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureBook/Pods-PictureBook.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDB20C6607EDC0BAE595C819 /* libPods-PictureBook.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570EFA477FBC2CE0A987C567 /* libPods-PictureBookTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,12 +96,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A584BF8A44427787F80FD5 /* libPods-PictureBookUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		472DD6D74B116CA620337FF2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F0D34EFEE610D4350FAAE4E2 /* Pods-PictureBook.debug.xcconfig */,
+				DD491A539685A1E99A249E51 /* Pods-PictureBook.release.xcconfig */,
+				B0BFB72C0C40A3DD7965ECAD /* Pods-PictureBookTests.debug.xcconfig */,
+				D59B683B209CC93E753390D7 /* Pods-PictureBookTests.release.xcconfig */,
+				AC85C626CEE9381DFF7EB760 /* Pods-PictureBookUITests.debug.xcconfig */,
+				9482C5F2970481BA39743E5C /* Pods-PictureBookUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5C99A7693813342130114A37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21D5AFCECF551082C5B37160 /* libPods-PictureBook.a */,
+				CF9D49CB79CAB325DC329E81 /* libPods-PictureBookTests.a */,
+				AF4F451037241D8BD7735D3D /* libPods-PictureBookUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DE2ECAFF2085F8C7009C4B36 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +133,8 @@
 				DE2ECB232085F8C8009C4B36 /* PictureBookTests */,
 				DE2ECB2E2085F8C8009C4B36 /* PictureBookUITests */,
 				DE2ECB092085F8C7009C4B36 /* Products */,
+				472DD6D74B116CA620337FF2 /* Pods */,
+				5C99A7693813342130114A37 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +178,8 @@
 		DE2ECB3D2085F91C009C4B36 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DE8B50202086E2B100D3057E /* Register */,
+				DE8B501F2086E2A200D3057E /* Home */,
 				DE2ECB3E2085F93B009C4B36 /* Others */,
 			);
 			name = Classes;
@@ -139,8 +194,47 @@
 				DE2ECB162085F8C8009C4B36 /* LaunchScreen.storyboard */,
 				DE2ECB192085F8C8009C4B36 /* Info.plist */,
 				DE2ECB1A2085F8C8009C4B36 /* main.m */,
+				DE8B50242086E68600D3057E /* PictureBook.pch */,
 			);
 			name = Others;
+			sourceTree = "<group>";
+		};
+		DE8B501F2086E2A200D3057E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		DE8B50202086E2B100D3057E /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				DE92B0FF20874F7D00DE4826 /* VCs */,
+				DE92B0FE20874F6E00DE4826 /* View */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		DE92B0FE20874F6E00DE4826 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE8B50282087395E00D3057E /* ChooseView.h */,
+				DE8B50292087395E00D3057E /* ChooseView.m */,
+				DE8B502B20873B8000D3057E /* ChooseButton.h */,
+				DE8B502C20873B8000D3057E /* ChooseButton.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		DE92B0FF20874F7D00DE4826 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				DE8B50212086E31200D3057E /* RegisterViewController.h */,
+				DE8B50222086E31200D3057E /* RegisterViewController.m */,
+				DE8B50252087373500D3057E /* ChooseViewController.h */,
+				DE8B50262087373500D3057E /* ChooseViewController.m */,
+			);
+			name = VCs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +244,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE2ECB342085F8C8009C4B36 /* Build configuration list for PBXNativeTarget "PictureBook" */;
 			buildPhases = (
+				BCF1329CD21FDF30D74D4714 /* [CP] Check Pods Manifest.lock */,
 				DE2ECB042085F8C7009C4B36 /* Sources */,
 				DE2ECB052085F8C7009C4B36 /* Frameworks */,
 				DE2ECB062085F8C7009C4B36 /* Resources */,
@@ -167,6 +262,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE2ECB372085F8C8009C4B36 /* Build configuration list for PBXNativeTarget "PictureBookTests" */;
 			buildPhases = (
+				02E3B28DC9F0C30795D14363 /* [CP] Check Pods Manifest.lock */,
 				DE2ECB1C2085F8C8009C4B36 /* Sources */,
 				DE2ECB1D2085F8C8009C4B36 /* Frameworks */,
 				DE2ECB1E2085F8C8009C4B36 /* Resources */,
@@ -185,6 +281,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE2ECB3A2085F8C8009C4B36 /* Build configuration list for PBXNativeTarget "PictureBookUITests" */;
 			buildPhases = (
+				F9C7C4F1BC1863FDF9BFB80F /* [CP] Check Pods Manifest.lock */,
 				DE2ECB272085F8C8009C4B36 /* Sources */,
 				DE2ECB282085F8C8009C4B36 /* Frameworks */,
 				DE2ECB292085F8C8009C4B36 /* Resources */,
@@ -268,12 +365,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		02E3B28DC9F0C30795D14363 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PictureBookTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCF1329CD21FDF30D74D4714 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PictureBook-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9C7C4F1BC1863FDF9BFB80F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PictureBookUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE2ECB042085F8C7009C4B36 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DE2ECB1B2085F8C8009C4B36 /* main.m in Sources */,
+				DE8B502A2087395E00D3057E /* ChooseView.m in Sources */,
+				DE8B502D20873B8000D3057E /* ChooseButton.m in Sources */,
+				DE8B50272087373500D3057E /* ChooseViewController.m in Sources */,
+				DE8B50232086E31200D3057E /* RegisterViewController.m in Sources */,
 				DE2ECB0D2085F8C7009C4B36 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,10 +599,13 @@
 		};
 		DE2ECB352085F8C8009C4B36 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0D34EFEE610D4350FAAE4E2 /* Pods-PictureBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 335U7J4U2G;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PictureBook/PictureBook.pch;
 				INFOPLIST_FILE = PictureBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -458,10 +619,13 @@
 		};
 		DE2ECB362085F8C8009C4B36 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD491A539685A1E99A249E51 /* Pods-PictureBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 335U7J4U2G;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PictureBook/PictureBook.pch;
 				INFOPLIST_FILE = PictureBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -475,6 +639,7 @@
 		};
 		DE2ECB382085F8C8009C4B36 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0BFB72C0C40A3DD7965ECAD /* Pods-PictureBookTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -494,6 +659,7 @@
 		};
 		DE2ECB392085F8C8009C4B36 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D59B683B209CC93E753390D7 /* Pods-PictureBookTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -513,6 +679,7 @@
 		};
 		DE2ECB3B2085F8C8009C4B36 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC85C626CEE9381DFF7EB760 /* Pods-PictureBookUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 335U7J4U2G;
@@ -531,6 +698,7 @@
 		};
 		DE2ECB3C2085F8C8009C4B36 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9482C5F2970481BA39743E5C /* Pods-PictureBookUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 335U7J4U2G;
