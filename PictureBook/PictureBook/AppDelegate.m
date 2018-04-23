@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "RegisterViewController.h"
+#import <UMMobClick/MobClick.h>
+#import "HomeViewController.h"
 @interface AppDelegate ()
 @property(nonatomic,strong) UINavigationController *nav;
 @end
@@ -15,23 +17,36 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    //配置友盟统计
+    UMConfigInstance.appKey = @"5ad9a57ff43e48663c0001b2";
+    UMConfigInstance.channelId = @"App Store";
+    UMConfigInstance.ePolicy =SEND_INTERVAL;
+    [MobClick startWithConfigure:UMConfigInstance];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary]objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+    //初始化
     self.window=[[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     self.window.backgroundColor=[UIColor whiteColor];
-    if (![USER_DEFAULT valueForKey:@"register"]) {
+    if (![USER_DEFAULT boolForKey:@"firstTime"]) {
         RegisterViewController *regVC = [[RegisterViewController alloc]init];
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:regVC];
         [nav setNavigationBarHidden:YES];
         self.nav = nav;
+        self.window.rootViewController = self.nav;
     }else{
-        
+        HomeViewController *home = [[HomeViewController alloc]init];
+        self.window.rootViewController = home;
     }
-    self.window.rootViewController = self.nav;
     [self.window makeKeyAndVisible];
-    
+    [self loadGoogleAd];
     return YES;
 }
-
+-(void)loadGoogleAd{
+    // Use Firebase library to configure APIs
+    [FIRApp configure];
+    // Initialize Google Mobile Ads SDK
+    [GADMobileAds configureWithApplicationID:@"ca-app-pub-4903381575382292~9621475125"];
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

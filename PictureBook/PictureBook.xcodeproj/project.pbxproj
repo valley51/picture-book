@@ -10,6 +10,13 @@
 		09A584BF8A44427787F80FD5 /* libPods-PictureBookUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4F451037241D8BD7735D3D /* libPods-PictureBookUITests.a */; };
 		570EFA477FBC2CE0A987C567 /* libPods-PictureBookTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9D49CB79CAB325DC329E81 /* libPods-PictureBookTests.a */; };
 		CDB20C6607EDC0BAE595C819 /* libPods-PictureBook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21D5AFCECF551082C5B37160 /* libPods-PictureBook.a */; };
+		DE1D1DF4208D772D00739915 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1D1DF3208D772D00739915 /* HomeViewController.m */; };
+		DE1D1DF7208D7FD400739915 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1D1DF6208D7FD400739915 /* MyFlowLayout.m */; };
+		DE1D1DFA208D8AF500739915 /* MyCoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1D1DF9208D8AF500739915 /* MyCoViewController.m */; };
+		DE1D1DFD208D8E7100739915 /* MyCoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1D1DFC208D8E7100739915 /* MyCoViewCell.m */; };
+		DE2616152089DB4F00B95CEE /* PictureBook.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2616142089DB4F00B95CEE /* PictureBook.m */; };
+		DE2616182089E18900B95CEE /* PictureBook.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = DE2616162089E18900B95CEE /* PictureBook.mobileprovision */; };
+		DE2616192089E18900B95CEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE2616172089E18900B95CEE /* GoogleService-Info.plist */; };
 		DE2ECB0D2085F8C7009C4B36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB0C2085F8C7009C4B36 /* AppDelegate.m */; };
 		DE2ECB132085F8C7009C4B36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2ECB112085F8C7009C4B36 /* Main.storyboard */; };
 		DE2ECB152085F8C8009C4B36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2ECB142085F8C8009C4B36 /* Assets.xcassets */; };
@@ -49,6 +56,18 @@
 		CF9D49CB79CAB325DC329E81 /* libPods-PictureBookTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PictureBookTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D59B683B209CC93E753390D7 /* Pods-PictureBookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureBookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureBookTests/Pods-PictureBookTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD491A539685A1E99A249E51 /* Pods-PictureBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureBook/Pods-PictureBook.release.xcconfig"; sourceTree = "<group>"; };
+		DE1D1DF2208D772D00739915 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		DE1D1DF3208D772D00739915 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		DE1D1DF5208D7FD400739915 /* MyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFlowLayout.h; sourceTree = "<group>"; };
+		DE1D1DF6208D7FD400739915 /* MyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFlowLayout.m; sourceTree = "<group>"; };
+		DE1D1DF8208D8AF500739915 /* MyCoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCoViewController.h; sourceTree = "<group>"; };
+		DE1D1DF9208D8AF500739915 /* MyCoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCoViewController.m; sourceTree = "<group>"; };
+		DE1D1DFB208D8E7100739915 /* MyCoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCoViewCell.h; sourceTree = "<group>"; };
+		DE1D1DFC208D8E7100739915 /* MyCoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCoViewCell.m; sourceTree = "<group>"; };
+		DE2616132089DB4F00B95CEE /* PictureBook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureBook.h; sourceTree = "<group>"; };
+		DE2616142089DB4F00B95CEE /* PictureBook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureBook.m; sourceTree = "<group>"; };
+		DE2616162089E18900B95CEE /* PictureBook.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = PictureBook.mobileprovision; sourceTree = "<group>"; };
+		DE2616172089E18900B95CEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE2ECB082085F8C7009C4B36 /* PictureBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2ECB0B2085F8C7009C4B36 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DE2ECB0C2085F8C7009C4B36 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -126,6 +145,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DE1D1DFE208DAD5900739915 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				DE1D1DF2208D772D00739915 /* HomeViewController.h */,
+				DE1D1DF3208D772D00739915 /* HomeViewController.m */,
+				DE1D1DF8208D8AF500739915 /* MyCoViewController.h */,
+				DE1D1DF9208D8AF500739915 /* MyCoViewController.m */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		DE1D1DFF208DAD5C00739915 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE1D1DF5208D7FD400739915 /* MyFlowLayout.h */,
+				DE1D1DF6208D7FD400739915 /* MyFlowLayout.m */,
+				DE1D1DFB208D8E7100739915 /* MyCoViewCell.h */,
+				DE1D1DFC208D8E7100739915 /* MyCoViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		DE1D1E00208DAD5E00739915 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		DE2ECAFF2085F8C7009C4B36 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +199,10 @@
 		DE2ECB0A2085F8C7009C4B36 /* PictureBook */ = {
 			isa = PBXGroup;
 			children = (
+				DE2616172089E18900B95CEE /* GoogleService-Info.plist */,
+				DE2616162089E18900B95CEE /* PictureBook.mobileprovision */,
+				DE2616132089DB4F00B95CEE /* PictureBook.h */,
+				DE2616142089DB4F00B95CEE /* PictureBook.m */,
 				DE2ECB3D2085F91C009C4B36 /* Classes */,
 				DE2ECB142085F8C8009C4B36 /* Assets.xcassets */,
 			);
@@ -202,6 +254,9 @@
 		DE8B501F2086E2A200D3057E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				DE1D1E00208DAD5E00739915 /* Model */,
+				DE1D1DFF208DAD5C00739915 /* View */,
+				DE1D1DFE208DAD5900739915 /* VC */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -248,6 +303,7 @@
 				DE2ECB042085F8C7009C4B36 /* Sources */,
 				DE2ECB052085F8C7009C4B36 /* Frameworks */,
 				DE2ECB062085F8C7009C4B36 /* Resources */,
+				B34D2554557FFDF21597E294 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -344,7 +400,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE2ECB182085F8C8009C4B36 /* LaunchScreen.storyboard in Resources */,
+				DE2616182089E18900B95CEE /* PictureBook.mobileprovision in Resources */,
 				DE2ECB152085F8C8009C4B36 /* Assets.xcassets in Resources */,
+				DE2616192089E18900B95CEE /* GoogleService-Info.plist in Resources */,
 				DE2ECB132085F8C7009C4B36 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +440,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B34D2554557FFDF21597E294 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PictureBook/Pods-PictureBook-resources.sh",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureBook/Pods-PictureBook-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BCF1329CD21FDF30D74D4714 /* [CP] Check Pods Manifest.lock */ = {
@@ -427,12 +503,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE1D1DFA208D8AF500739915 /* MyCoViewController.m in Sources */,
 				DE2ECB1B2085F8C8009C4B36 /* main.m in Sources */,
 				DE8B502A2087395E00D3057E /* ChooseView.m in Sources */,
+				DE2616152089DB4F00B95CEE /* PictureBook.m in Sources */,
 				DE8B502D20873B8000D3057E /* ChooseButton.m in Sources */,
 				DE8B50272087373500D3057E /* ChooseViewController.m in Sources */,
 				DE8B50232086E31200D3057E /* RegisterViewController.m in Sources */,
+				DE1D1DF7208D7FD400739915 /* MyFlowLayout.m in Sources */,
+				DE1D1DFD208D8E7100739915 /* MyCoViewCell.m in Sources */,
 				DE2ECB0D2085F8C7009C4B36 /* AppDelegate.m in Sources */,
+				DE1D1DF4208D772D00739915 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +619,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -590,7 +671,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -602,17 +683,19 @@
 			baseConfigurationReference = F0D34EFEE610D4350FAAE4E2 /* Pods-PictureBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 335U7J4U2G;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PictureBook/PictureBook.pch;
 				INFOPLIST_FILE = PictureBook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zaoliedu.PictureBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zaoliedu.PictureBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = PictureBook;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -622,17 +705,21 @@
 			baseConfigurationReference = DD491A539685A1E99A249E51 /* Pods-PictureBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 335U7J4U2G;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PictureBook/PictureBook.pch;
 				INFOPLIST_FILE = PictureBook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zaoliedu.PictureBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zaoliedu.PictureBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8fc01484-ab7e-4a80-8fea-451dc43069a5";
+				PROVISIONING_PROFILE_SPECIFIER = PictureBook;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

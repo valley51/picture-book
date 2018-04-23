@@ -21,7 +21,8 @@
         NSArray *stringArray = @[@"VIPKID 纯北美外教 代言人刘涛",@"哒哒外教 专属外教 代言人孙俪",@"51Talk 高校教材 代言人贾乃亮",@"VipJr 量身定制课 代言人姚明",@"以上都想试听体验"];
         NSMutableArray *tmp = [NSMutableArray array];
         for (int i =0; i<5; i++) {
-            ChooseButton *button= [[ChooseButton alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
+//            ChooseButton *button= [[ChooseButton alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
+            ChooseButton *button = [ChooseButton buttonWithType:UIButtonTypeCustom];
             NSString *string = stringArray[i];
             [button setTitle:string forState:UIControlStateNormal];
             [button addTarget:self action:@selector(xuanze:) forControlEvents:UIControlEventAllTouchEvents];

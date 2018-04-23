@@ -19,4 +19,7 @@
     }
     return self;
 }
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+  self.selected = !self.selected;
+}
 @end

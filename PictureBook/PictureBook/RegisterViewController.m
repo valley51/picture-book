@@ -8,7 +8,9 @@
 
 #import "RegisterViewController.h"
 #import "ChooseViewController.h"
-@interface RegisterViewController ()
+#import "HomeViewController.h"
+#import "SVProgressHUD.h"
+@interface RegisterViewController ()<UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate>
 
 //跳过按钮
 @property(nonatomic,strong) UIButton *skipBtn;
@@ -18,22 +20,33 @@
 //手机号码 输入框
 @property(nonatomic,strong) UIImageView *phoneIV;
 @property(nonatomic,strong) UITextField *phoneTF;
+@property(nonatomic,strong) NSString *phone;
 //验证码 输入框
 @property(nonatomic,strong) UIImageView *cheakIV;
 @property(nonatomic,strong) UITextField *cheakTF;
 @property(nonatomic,strong) UIButton *getBtn;
+@property(nonatomic,strong) NSString *code;
+@property(nonatomic,assign) BOOL finishRegister;
 //年龄 输入框
 @property(nonatomic,strong) UIImageView *ageIV;
 @property(nonatomic,strong) UITextField *ageTF;
+@property(nonatomic,strong) UIPickerView *pick;
+@property(nonatomic,strong) NSArray *ageArray;
 //注册按钮
 @property(nonatomic,strong) UIButton *regBtn;
 
 @end
 
 @implementation RegisterViewController
-
+- (NSArray *)ageArray{
+    if (_ageArray==nil) {
+        _ageArray = @[@"不到4岁",@"4岁",@"5岁",@"6岁",@"7岁",@"8岁",@"9岁",@"10岁",@"11岁",@"12岁",@"12岁以上"];
+    }
+    return _ageArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.finishRegister = NO;
     [self setUp];
     [self setConstraits];
 }
@@ -75,6 +88,7 @@
     phoneTF.placeholder = @"请输入手机号码                          ";
     phoneTF.tintColor = RGBColor(166, 100, 70);
     self.phoneTF = phoneTF;
+    self.phoneTF.delegate = self;
     [self.view addSubview:phoneTF];
     //验证码
     UIImageView *cheakIV = [[UIImageView alloc]initWithImage:kGetImage(@"blo")];
@@ -87,25 +101,31 @@
     cheakTF.backgroundColor = [UIColor whiteColor];
     cheakTF.placeholder = @"                                 ";
     self.cheakTF = cheakTF;
+    self.cheakTF.delegate = self;
     [self.view addSubview:cheakTF];
-    UIButton *cheakBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    cheakBtn.frame = CGRectMake(0, 0, 100, 38);
-    cheakBtn.backgroundColor =RGBColor(166, 100, 70);
-    [cheakBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-    [cheakBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.getBtn = cheakBtn;
-    [self.view addSubview:cheakBtn];
+    UIButton *getBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    getBtn.frame = CGRectMake(0, 0, 100, 38);
+    getBtn.backgroundColor =RGBColor(166, 100, 70);
+    [getBtn addTarget:self action:@selector(huoqu) forControlEvents:UIControlEventTouchUpInside];
+    [getBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [getBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.getBtn = getBtn;
+    [self.view addSubview:getBtn];
     //年龄
     UIImageView *ageIV = [[UIImageView alloc]initWithImage:kGetImage(@"age")];
     self.ageIV = ageIV;
     [self.view addSubview:ageIV];
     UITextField *ageTF = [[UITextField alloc]init];
     ageTF.borderStyle = UITextBorderStyleRoundedRect;
-    ageTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-    ageTF.keyboardType = UIKeyboardTypeDecimalPad;
+    self.pick = [[UIPickerView alloc]init];
+    self.pick.delegate = self;
+    self.pick.dataSource = self;
+    ageTF.inputView = self.pick;
     ageTF.backgroundColor = [UIColor whiteColor];
     ageTF.placeholder = @"请选择孩子的年龄                         ";
+    ageTF.tintColor = ClearColor;
     self.ageTF = ageTF;
+    self.ageTF.delegate = self;
     [self.view addSubview:ageTF];
     //注册按钮
     UIImageView *iv = [[UIImageView alloc] initWithImage:kGetImage(@"button")];
@@ -165,29 +185,177 @@
         make.left.equalTo(self.view).offset((screenW-self.regBtn.frame.size.width)*0.5);
     }];
 }
+#pragma mark ============picker==============
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return 11;
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    return self.ageArray[row];
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    self.ageTF.text = self.ageArray[row];
+}
+
+/**
+ 退出第一响应者
+ */
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    [self.ageTF resignFirstResponder];
+    [self.cheakTF resignFirstResponder];
+    [self.phoneTF resignFirstResponder];
+}
+#pragma mark ============输入框代理==============
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField == self.phoneTF) {
+        self.phone = self.phoneTF.text;
+    }else if (textField == self.cheakTF){
+        self.code = self.cheakTF.text;
+        [self yanzheng];
+    }
+}
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (textField == self.cheakTF) {
+        if (self.phone) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }else{
+        return YES;
+    }
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == self.ageTF) {
+        return NO;
+    }else{
+        return YES;
+    }
+}
 /**
  跳过注册
  */
 - (void)skip{
     NSLog(@"%s",__func__);
+    [USER_DEFAULT setBool:YES forKey:@"firstTime"];
+    HomeViewController *home = [[HomeViewController alloc]init];
+    [self.navigationController pushViewController:home animated:YES];
 }
 
 /**
- 注册
+ 获取验证码
+ */
+- (void)huoqu{
+    [self.phoneTF endEditing:YES];
+    if ([self valiMobile:self.phone]) {
+        NSDictionary *dic = @{
+                              @"phone":self.phone,
+                              @"app":@"app2"
+                              };
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        [manager GET:@"http://app.52kb.cn:666/get_phone_code" parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSString *string = responseObject[@"msg"];
+            NSLog(@"msg========%@",string);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        }];
+    }else{
+        [self alertWith:@"请输入正确的手机号"];
+    }
+}
+- (void)yanzheng{
+    NSDictionary *dic = @{
+                          @"code":self.code,
+                          @"phone":self.phone,
+                          @"app":@"app2"
+                          };
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager GET:@"http://app.52kb.cn:666/verify_phone_code" parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *string = responseObject[@"msg"];
+        NSLog(@"yanzheng======%@",string);
+        if ([string integerValue]) {
+            [SVProgressHUD showSuccessWithStatus:@"验证成功"];
+            self.finishRegister = YES;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
+        } else{
+            [SVProgressHUD showErrorWithStatus:@"验证码错误"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error");
+    }];
+}
+
+/**
+ 判断手机号格式是否正确
+ @param mobile 手机号
+ @return 正确与否
+ */
+- (BOOL)valiMobile:(NSString *)mobile
+{
+    mobile = [mobile stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (mobile.length != 11)
+    {
+        return NO;
+    }else{
+        /**
+         * 移动号段正则表达式
+         */
+        NSString *CM_NUM = @"^((13[4-9])|(147)|(15[0-2,7-9])|(178)|(18[2-4,7-8]))\\d{8}|(1705)\\d{7}$";
+        /**
+         * 联通号段正则表达式
+         */
+        NSString *CU_NUM = @"^((13[0-2])|(145)|(15[5-6])|(176)|(18[5,6]))\\d{8}|(1709)\\d{7}$";
+        /**
+         * 电信号段正则表达式
+         */
+        NSString *CT_NUM = @"^((133)|(153)|(177)|(18[0,1,9]))\\d{8}$";
+        NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM_NUM];
+        BOOL isMatch1 = [pred1 evaluateWithObject:mobile];
+        NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU_NUM];
+        BOOL isMatch2 = [pred2 evaluateWithObject:mobile];
+        NSPredicate *pred3 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT_NUM];
+        BOOL isMatch3 = [pred3 evaluateWithObject:mobile];
+        
+        if (isMatch1 || isMatch2 || isMatch3) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }
+}
+/**
+ 完成注册
  */
 - (void)zhuce{
-    NSLog(@"%s",__func__);
-    ChooseViewController *choose = [[ChooseViewController alloc]init];
-    [self.navigationController pushViewController:choose animated:YES];
+    if (self.ageTF.text.length>0 && self.finishRegister) {
+        ChooseViewController *choose = [[ChooseViewController alloc]init];
+        choose.age = self.ageTF.text;
+        choose.phone = self.phone;
+        [self.navigationController pushViewController:choose animated:YES];
+    }else if (self.ageTF.text.length>0){
+        [self alertWith:@"请输入正确的验证码"];
+    }else{
+        [self alertWith:@"请选择年龄"];
+    }
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+/**
+ 提醒
+ */
+- (void)alertWith:(NSString *)string{
+    [SVProgressHUD showErrorWithStatus:string];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+    });
 }
-*/
 
 @end

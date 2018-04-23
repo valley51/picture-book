@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ChooseViewController : UIViewController
-
+@property(nonatomic,strong) NSString *age;
+@property(nonatomic,strong) NSString *phone;
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "ChooseViewController.h"
-#import "ChooseView.h"
+#import "HomeViewController.h"
+#import "ChooseButton.h"
+#import "SVProgressHUD.h"
 @interface ChooseViewController ()
 
 @property(nonatomic,strong) UIButton *skipBtn;
@@ -15,13 +17,14 @@
 @property(nonatomic,strong) UILabel *tixing;
 @property(nonatomic,strong) UILabel *jianyi;
 
-@property(nonatomic,strong) ChooseView *choose;
-
+@property(nonatomic,strong) ChooseButton *allBtn;
+@property(nonatomic,strong) NSMutableArray *tmp;
 @property(nonatomic,strong) UIButton *sureBtn;
+//@property(nonatomic,strong) NSString *Okay;
+
 @end
 
 @implementation ChooseViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUp];
@@ -61,14 +64,24 @@
     jianyi.textColor = RGBColor(25, 98, 139);
     self.jianyi = jianyi;
     [self.view addSubview:jianyi];
-    //选择框
-    ChooseView *choose = [[ChooseView alloc]initWithFrame:CGRectMake(0, 0, screenW-60, 300)];
-    [self.view addSubview:choose];
-    self.choose = choose;
+    //选择界面
+    NSArray *stringArray = @[@"VIPKID 纯北美外教 代言人刘涛",@"哒哒外教 专属外教 代言人孙俪",@"51Talk 高校教材 代言人贾乃亮",@"VipJr 量身定制课 代言人姚明"];
+    self.tmp = [NSMutableArray array];
+    for (int i =0; i<4; i++) {
+        ChooseButton *button = [ChooseButton buttonWithType:UIButtonTypeCustom];
+        NSString *string = stringArray[i];
+        [button setTitle:string forState:UIControlStateNormal];
+        [_tmp addObject:button];
+        [self.view addSubview:button];
+    }
+    ChooseButton *allBtn = [ChooseButton buttonWithType:UIButtonTypeCustom];
+    [allBtn setTitle:@"以上都想试听体验" forState:UIControlStateNormal];
+    [self.view addSubview:allBtn];
+    self.allBtn = allBtn;
     //确认
     UIImageView *iv = [[UIImageView alloc] initWithImage:kGetImage(@"button")];
     UIButton *button = [[UIButton alloc] initWithFrame:iv.frame];
-    [button setImage:kGetImage(@"button") forState:UIControlStateNormal];;
+    [button setImage:kGetImage(@"choose") forState:UIControlStateNormal];;
     [button addTarget:self action:@selector(sure) forControlEvents:UIControlEventTouchUpInside];
     self.sureBtn = button;
     [self.view addSubview:button];
@@ -90,30 +103,77 @@
         make.top.equalTo(self.tixing.bottom).offset(5);
         make.left.equalTo(self.view).offset(20);
     }];
-    [self.choose mas_makeConstraints:^(MASConstraintMaker *make) {
+    for (int i = 0; i<4; i++) {
+        ChooseButton *button = self.tmp[i];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.jianyi.bottom).offset(20+50*i);
+            make.left.equalTo(self.view).offset(50);
+        }];
+    }
+    [self.allBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.jianyi.bottom).offset(20+50*4);
         make.left.equalTo(self.view).offset(50);
-        make.top.equalTo(self.jianyi.bottom).offset(40);
     }];
     [self.sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         //需要适配/////////////
-        make.bottom.equalTo(self.view).offset(-100);
-        make.left.equalTo(self.view).offset((screenW-self.sureBtn.frame.size.width)*0.5);
+        make.top.equalTo(self.allBtn.bottom).offset(100);
+        make.centerX.equalTo(self.view);
     }];
 }
 - (void)skip{
-    
+    NSDictionary *dic = @{
+                          @"app":@"app2"
+                          };
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:@"http://app.52kb.cn:666/get_shut_count" parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject[@"msg"]);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error");
+    }];
+    [self completeRegister:@"0"];
 }
--(void)sure{
-    NSLog(@"%s",__func__);
-}
-/*
-#pragma mark - Navigation
+- (void)sure{
+    NSMutableString *organization = [NSMutableString string];
+    if (self.allBtn.selected) {
+        [organization appendString:[NSString stringWithFormat:@"1234"]];
+    }else{
+        for (int i = 0; i<4; i++) {
+            ChooseButton *button = self.tmp[i];
+            if (button.selected) {
+                [organization appendString:[NSString stringWithFormat:@"%d",i+1]];
+            }
+        }
+    }
+    NSLog(@"%@========%@====%@",self.phone,self.age,organization);
+    [self completeRegister:organization];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
-
+- (void)completeRegister:(NSString *)organization{
+    if (organization.length>0) {
+        NSDictionary *dic = @{
+                              @"age":self.age,
+                              @"phone":self.phone,
+                              @"organization":organization,
+                              @"app":@"app2"
+                              };
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager GET:@"http://app.52kb.cn:666/set_register_info" parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSString *string = responseObject[@"msg"];
+            NSLog(@"注册======%@",string);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"error");
+        }];
+        HomeViewController *home = [[HomeViewController alloc]init];
+        [self.navigationController pushViewController:home animated:YES];
+        [USER_DEFAULT setBool:YES forKey:@"register"];
+    }else{
+        [self alertWith:@"您还没有选择要试听的机构呢～"];
+    }
+}
+- (void)alertWith:(NSString *)string{
+    [SVProgressHUD showErrorWithStatus:string];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+    });
+}
 @end
