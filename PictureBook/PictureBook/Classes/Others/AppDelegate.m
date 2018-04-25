@@ -10,6 +10,7 @@
 #import "RegisterViewController.h"
 #import <UMMobClick/MobClick.h>
 #import "HomeViewController.h"
+#import "testViewController.h"
 @interface AppDelegate ()
 @property(nonatomic,strong) UINavigationController *nav;
 @end
@@ -24,6 +25,7 @@
     [MobClick startWithConfigure:UMConfigInstance];
     NSString *version = [[[NSBundle mainBundle] infoDictionary]objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
+    
     //初始化
     self.window=[[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     self.window.backgroundColor=[UIColor whiteColor];
@@ -35,6 +37,7 @@
         self.window.rootViewController = self.nav;
     }else{
         HomeViewController *home = [[HomeViewController alloc]init];
+//        testViewController *home = [[testViewController alloc]init];
         self.window.rootViewController = home;
     }
     [self.window makeKeyAndVisible];

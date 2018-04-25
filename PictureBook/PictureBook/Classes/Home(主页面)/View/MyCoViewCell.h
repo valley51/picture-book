@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Book;
 @interface MyCoViewCell : UICollectionViewCell
+
 @property(nonatomic,strong) UIImageView *imageView;
+@property(nonatomic,strong) Book *cellBook;
+
 @end

@@ -18,16 +18,22 @@
 		DE2616182089E18900B95CEE /* PictureBook.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = DE2616162089E18900B95CEE /* PictureBook.mobileprovision */; };
 		DE2616192089E18900B95CEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE2616172089E18900B95CEE /* GoogleService-Info.plist */; };
 		DE2ECB0D2085F8C7009C4B36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB0C2085F8C7009C4B36 /* AppDelegate.m */; };
-		DE2ECB132085F8C7009C4B36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2ECB112085F8C7009C4B36 /* Main.storyboard */; };
 		DE2ECB152085F8C8009C4B36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2ECB142085F8C8009C4B36 /* Assets.xcassets */; };
 		DE2ECB182085F8C8009C4B36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2ECB162085F8C8009C4B36 /* LaunchScreen.storyboard */; };
 		DE2ECB1B2085F8C8009C4B36 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB1A2085F8C8009C4B36 /* main.m */; };
 		DE2ECB252085F8C8009C4B36 /* PictureBookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB242085F8C8009C4B36 /* PictureBookTests.m */; };
 		DE2ECB302085F8C8009C4B36 /* PictureBookUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB2F2085F8C8009C4B36 /* PictureBookUITests.m */; };
+		DE8831352090159E0001972B /* UIImage+CellImage.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8831342090159E0001972B /* UIImage+CellImage.m */; };
+		DE88313E2090291A0001972B /* testViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE88313C2090291A0001972B /* testViewController.m */; };
+		DE88313F2090291A0001972B /* testViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE88313D2090291A0001972B /* testViewController.xib */; };
+		DE88314220906D2D0001972B /* BookPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE88314120906D2D0001972B /* BookPlayViewController.m */; };
+		DE883145209075D40001972B /* BookData.m in Sources */ = {isa = PBXBuildFile; fileRef = DE883144209075D40001972B /* BookData.m */; };
+		DE883148209075F90001972B /* SinglePage.m in Sources */ = {isa = PBXBuildFile; fileRef = DE883147209075F90001972B /* SinglePage.m */; };
 		DE8B50232086E31200D3057E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8B50222086E31200D3057E /* RegisterViewController.m */; };
 		DE8B50272087373500D3057E /* ChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8B50262087373500D3057E /* ChooseViewController.m */; };
-		DE8B502A2087395E00D3057E /* ChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8B50292087395E00D3057E /* ChooseView.m */; };
 		DE8B502D20873B8000D3057E /* ChooseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8B502C20873B8000D3057E /* ChooseButton.m */; };
+		DED153B3208F047B00475AF5 /* YYHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DED153B2208F047B00475AF5 /* YYHttpTool.m */; };
+		DED153B6208F2A1900475AF5 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = DED153B5208F2A1900475AF5 /* Book.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +77,6 @@
 		DE2ECB082085F8C7009C4B36 /* PictureBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2ECB0B2085F8C7009C4B36 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DE2ECB0C2085F8C7009C4B36 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DE2ECB122085F8C7009C4B36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE2ECB142085F8C8009C4B36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE2ECB172085F8C8009C4B36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE2ECB192085F8C8009C4B36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,15 +87,28 @@
 		DE2ECB2B2085F8C8009C4B36 /* PictureBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictureBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2ECB2F2085F8C8009C4B36 /* PictureBookUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureBookUITests.m; sourceTree = "<group>"; };
 		DE2ECB312085F8C8009C4B36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE8831332090159E0001972B /* UIImage+CellImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+CellImage.h"; sourceTree = "<group>"; };
+		DE8831342090159E0001972B /* UIImage+CellImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CellImage.m"; sourceTree = "<group>"; };
+		DE88313B2090291A0001972B /* testViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testViewController.h; sourceTree = "<group>"; };
+		DE88313C2090291A0001972B /* testViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testViewController.m; sourceTree = "<group>"; };
+		DE88313D2090291A0001972B /* testViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = testViewController.xib; sourceTree = "<group>"; };
+		DE88314020906D2D0001972B /* BookPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookPlayViewController.h; sourceTree = "<group>"; };
+		DE88314120906D2D0001972B /* BookPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookPlayViewController.m; sourceTree = "<group>"; };
+		DE883143209075D40001972B /* BookData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookData.h; sourceTree = "<group>"; };
+		DE883144209075D40001972B /* BookData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookData.m; sourceTree = "<group>"; };
+		DE883146209075F90001972B /* SinglePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SinglePage.h; sourceTree = "<group>"; };
+		DE883147209075F90001972B /* SinglePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SinglePage.m; sourceTree = "<group>"; };
 		DE8B50212086E31200D3057E /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		DE8B50222086E31200D3057E /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		DE8B50242086E68600D3057E /* PictureBook.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureBook.pch; sourceTree = "<group>"; };
 		DE8B50252087373500D3057E /* ChooseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseViewController.h; sourceTree = "<group>"; };
 		DE8B50262087373500D3057E /* ChooseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseViewController.m; sourceTree = "<group>"; };
-		DE8B50282087395E00D3057E /* ChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseView.h; sourceTree = "<group>"; };
-		DE8B50292087395E00D3057E /* ChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseView.m; sourceTree = "<group>"; };
 		DE8B502B20873B8000D3057E /* ChooseButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseButton.h; sourceTree = "<group>"; };
 		DE8B502C20873B8000D3057E /* ChooseButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseButton.m; sourceTree = "<group>"; };
+		DED153B1208F047B00475AF5 /* YYHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYHttpTool.h; sourceTree = "<group>"; };
+		DED153B2208F047B00475AF5 /* YYHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYHttpTool.m; sourceTree = "<group>"; };
+		DED153B4208F2A1900475AF5 /* Book.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
+		DED153B5208F2A1900475AF5 /* Book.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
 		F0D34EFEE610D4350FAAE4E2 /* Pods-PictureBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureBook/Pods-PictureBook.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,35 +163,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DE1D1DFE208DAD5900739915 /* VC */ = {
-			isa = PBXGroup;
-			children = (
-				DE1D1DF2208D772D00739915 /* HomeViewController.h */,
-				DE1D1DF3208D772D00739915 /* HomeViewController.m */,
-				DE1D1DF8208D8AF500739915 /* MyCoViewController.h */,
-				DE1D1DF9208D8AF500739915 /* MyCoViewController.m */,
-			);
-			name = VC;
-			sourceTree = "<group>";
-		};
-		DE1D1DFF208DAD5C00739915 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DE1D1DF5208D7FD400739915 /* MyFlowLayout.h */,
-				DE1D1DF6208D7FD400739915 /* MyFlowLayout.m */,
-				DE1D1DFB208D8E7100739915 /* MyCoViewCell.h */,
-				DE1D1DFC208D8E7100739915 /* MyCoViewCell.m */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		DE1D1E00208DAD5E00739915 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		DE2ECAFF2085F8C7009C4B36 = {
 			isa = PBXGroup;
 			children = (
@@ -199,12 +188,13 @@
 		DE2ECB0A2085F8C7009C4B36 /* PictureBook */ = {
 			isa = PBXGroup;
 			children = (
+				DE2ECB192085F8C8009C4B36 /* Info.plist */,
+				DE2ECB162085F8C8009C4B36 /* LaunchScreen.storyboard */,
+				DE2ECB1A2085F8C8009C4B36 /* main.m */,
 				DE2616172089E18900B95CEE /* GoogleService-Info.plist */,
 				DE2616162089E18900B95CEE /* PictureBook.mobileprovision */,
-				DE2616132089DB4F00B95CEE /* PictureBook.h */,
-				DE2616142089DB4F00B95CEE /* PictureBook.m */,
-				DE2ECB3D2085F91C009C4B36 /* Classes */,
 				DE2ECB142085F8C8009C4B36 /* Assets.xcassets */,
+				DE8831222090139F0001972B /* Classes */,
 			);
 			path = PictureBook;
 			sourceTree = "<group>";
@@ -227,61 +217,147 @@
 			path = PictureBookUITests;
 			sourceTree = "<group>";
 		};
-		DE2ECB3D2085F91C009C4B36 /* Classes */ = {
+		DE8831222090139F0001972B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DE8B50202086E2B100D3057E /* Register */,
-				DE8B501F2086E2A200D3057E /* Home */,
-				DE2ECB3E2085F93B009C4B36 /* Others */,
+				DE88313A209028F70001972B /* 测试 */,
+				DE88312B2090139F0001972B /* Others */,
+				DE8831232090139F0001972B /* Play(播放页面) */,
+				DE8831272090139F0001972B /* Home(主页面) */,
+				DE88312F2090139F0001972B /* Register(注册) */,
 			);
-			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		DE2ECB3E2085F93B009C4B36 /* Others */ = {
+		DE8831232090139F0001972B /* Play(播放页面) */ = {
 			isa = PBXGroup;
 			children = (
+				DE8831242090139F0001972B /* VierController */,
+				DE8831252090139F0001972B /* Model */,
+				DE8831262090139F0001972B /* View */,
+			);
+			path = "Play(播放页面)";
+			sourceTree = "<group>";
+		};
+		DE8831242090139F0001972B /* VierController */ = {
+			isa = PBXGroup;
+			children = (
+				DE88314020906D2D0001972B /* BookPlayViewController.h */,
+				DE88314120906D2D0001972B /* BookPlayViewController.m */,
+			);
+			path = VierController;
+			sourceTree = "<group>";
+		};
+		DE8831252090139F0001972B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE883143209075D40001972B /* BookData.h */,
+				DE883144209075D40001972B /* BookData.m */,
+				DE883146209075F90001972B /* SinglePage.h */,
+				DE883147209075F90001972B /* SinglePage.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE8831262090139F0001972B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE8831272090139F0001972B /* Home(主页面) */ = {
+			isa = PBXGroup;
+			children = (
+				DE8831282090139F0001972B /* VierController */,
+				DE8831292090139F0001972B /* Model */,
+				DE88312A2090139F0001972B /* View */,
+			);
+			path = "Home(主页面)";
+			sourceTree = "<group>";
+		};
+		DE8831282090139F0001972B /* VierController */ = {
+			isa = PBXGroup;
+			children = (
+				DE1D1DF2208D772D00739915 /* HomeViewController.h */,
+				DE1D1DF3208D772D00739915 /* HomeViewController.m */,
+				DE1D1DF8208D8AF500739915 /* MyCoViewController.h */,
+				DE1D1DF9208D8AF500739915 /* MyCoViewController.m */,
+			);
+			path = VierController;
+			sourceTree = "<group>";
+		};
+		DE8831292090139F0001972B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DED153B4208F2A1900475AF5 /* Book.h */,
+				DED153B5208F2A1900475AF5 /* Book.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE88312A2090139F0001972B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE1D1DF5208D7FD400739915 /* MyFlowLayout.h */,
+				DE1D1DF6208D7FD400739915 /* MyFlowLayout.m */,
+				DE1D1DFB208D8E7100739915 /* MyCoViewCell.h */,
+				DE1D1DFC208D8E7100739915 /* MyCoViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE88312B2090139F0001972B /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				DE2616132089DB4F00B95CEE /* PictureBook.h */,
+				DE2616142089DB4F00B95CEE /* PictureBook.m */,
 				DE2ECB0B2085F8C7009C4B36 /* AppDelegate.h */,
 				DE2ECB0C2085F8C7009C4B36 /* AppDelegate.m */,
-				DE2ECB112085F8C7009C4B36 /* Main.storyboard */,
-				DE2ECB162085F8C8009C4B36 /* LaunchScreen.storyboard */,
-				DE2ECB192085F8C8009C4B36 /* Info.plist */,
-				DE2ECB1A2085F8C8009C4B36 /* main.m */,
 				DE8B50242086E68600D3057E /* PictureBook.pch */,
+				DE88312C2090139F0001972B /* Category */,
+				DE88312D2090139F0001972B /* Lib */,
+				DE88312E2090139F0001972B /* Tool */,
 			);
-			name = Others;
+			path = Others;
 			sourceTree = "<group>";
 		};
-		DE8B501F2086E2A200D3057E /* Home */ = {
+		DE88312C2090139F0001972B /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				DE1D1E00208DAD5E00739915 /* Model */,
-				DE1D1DFF208DAD5C00739915 /* View */,
-				DE1D1DFE208DAD5900739915 /* VC */,
+				DE8831332090159E0001972B /* UIImage+CellImage.h */,
+				DE8831342090159E0001972B /* UIImage+CellImage.m */,
 			);
-			name = Home;
+			path = Category;
 			sourceTree = "<group>";
 		};
-		DE8B50202086E2B100D3057E /* Register */ = {
+		DE88312D2090139F0001972B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				DE92B0FF20874F7D00DE4826 /* VCs */,
-				DE92B0FE20874F6E00DE4826 /* View */,
 			);
-			name = Register;
+			path = Lib;
 			sourceTree = "<group>";
 		};
-		DE92B0FE20874F6E00DE4826 /* View */ = {
+		DE88312E2090139F0001972B /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				DE8B50282087395E00D3057E /* ChooseView.h */,
-				DE8B50292087395E00D3057E /* ChooseView.m */,
-				DE8B502B20873B8000D3057E /* ChooseButton.h */,
-				DE8B502C20873B8000D3057E /* ChooseButton.m */,
+				DED153B1208F047B00475AF5 /* YYHttpTool.h */,
+				DED153B2208F047B00475AF5 /* YYHttpTool.m */,
 			);
-			name = View;
+			path = Tool;
 			sourceTree = "<group>";
 		};
-		DE92B0FF20874F7D00DE4826 /* VCs */ = {
+		DE88312F2090139F0001972B /* Register(注册) */ = {
+			isa = PBXGroup;
+			children = (
+				DE8831302090139F0001972B /* VierController */,
+				DE8831312090139F0001972B /* Model */,
+				DE8831322090139F0001972B /* View */,
+			);
+			path = "Register(注册)";
+			sourceTree = "<group>";
+		};
+		DE8831302090139F0001972B /* VierController */ = {
 			isa = PBXGroup;
 			children = (
 				DE8B50212086E31200D3057E /* RegisterViewController.h */,
@@ -289,7 +365,33 @@
 				DE8B50252087373500D3057E /* ChooseViewController.h */,
 				DE8B50262087373500D3057E /* ChooseViewController.m */,
 			);
-			name = VCs;
+			path = VierController;
+			sourceTree = "<group>";
+		};
+		DE8831312090139F0001972B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE8831322090139F0001972B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE8B502B20873B8000D3057E /* ChooseButton.h */,
+				DE8B502C20873B8000D3057E /* ChooseButton.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE88313A209028F70001972B /* 测试 */ = {
+			isa = PBXGroup;
+			children = (
+				DE88313B2090291A0001972B /* testViewController.h */,
+				DE88313C2090291A0001972B /* testViewController.m */,
+				DE88313D2090291A0001972B /* testViewController.xib */,
+			);
+			path = "测试";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,7 +505,7 @@
 				DE2616182089E18900B95CEE /* PictureBook.mobileprovision in Resources */,
 				DE2ECB152085F8C8009C4B36 /* Assets.xcassets in Resources */,
 				DE2616192089E18900B95CEE /* GoogleService-Info.plist in Resources */,
-				DE2ECB132085F8C7009C4B36 /* Main.storyboard in Resources */,
+				DE88313F2090291A0001972B /* testViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,15 +607,21 @@
 			files = (
 				DE1D1DFA208D8AF500739915 /* MyCoViewController.m in Sources */,
 				DE2ECB1B2085F8C8009C4B36 /* main.m in Sources */,
-				DE8B502A2087395E00D3057E /* ChooseView.m in Sources */,
+				DE8831352090159E0001972B /* UIImage+CellImage.m in Sources */,
 				DE2616152089DB4F00B95CEE /* PictureBook.m in Sources */,
+				DE88314220906D2D0001972B /* BookPlayViewController.m in Sources */,
+				DED153B3208F047B00475AF5 /* YYHttpTool.m in Sources */,
+				DED153B6208F2A1900475AF5 /* Book.m in Sources */,
 				DE8B502D20873B8000D3057E /* ChooseButton.m in Sources */,
 				DE8B50272087373500D3057E /* ChooseViewController.m in Sources */,
 				DE8B50232086E31200D3057E /* RegisterViewController.m in Sources */,
+				DE883145209075D40001972B /* BookData.m in Sources */,
 				DE1D1DF7208D7FD400739915 /* MyFlowLayout.m in Sources */,
 				DE1D1DFD208D8E7100739915 /* MyCoViewCell.m in Sources */,
 				DE2ECB0D2085F8C7009C4B36 /* AppDelegate.m in Sources */,
+				DE88313E2090291A0001972B /* testViewController.m in Sources */,
 				DE1D1DF4208D772D00739915 /* HomeViewController.m in Sources */,
+				DE883148209075F90001972B /* SinglePage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,14 +657,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DE2ECB112085F8C7009C4B36 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE2ECB122085F8C7009C4B36 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DE2ECB162085F8C8009C4B36 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -686,7 +786,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 335U7J4U2G;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PictureBook/PictureBook.pch;
+				GCC_PREFIX_HEADER = PictureBook/Classes/Others/PictureBook.pch;
 				INFOPLIST_FILE = PictureBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -709,7 +809,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 335U7J4U2G;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PictureBook/PictureBook.pch;
+				GCC_PREFIX_HEADER = PictureBook/Classes/Others/PictureBook.pch;
 				INFOPLIST_FILE = PictureBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

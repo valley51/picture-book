@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MyCoViewController : UICollectionViewController
-
+- (void)getBookWith:(NSString *)age;
 @end

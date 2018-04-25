@@ -212,7 +212,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField == self.phoneTF) {
         self.phone = self.phoneTF.text;
-    }else if (textField == self.cheakTF){
+    }else if (textField == self.cheakTF && self.cheakTF.text.length>0){
         self.code = self.cheakTF.text;
         [self yanzheng];
     }
@@ -235,11 +235,11 @@
         return YES;
     }
 }
+#pragma mark ============注册业务逻辑==============
 /**
  跳过注册
  */
 - (void)skip{
-    NSLog(@"%s",__func__);
     [USER_DEFAULT setBool:YES forKey:@"firstTime"];
     HomeViewController *home = [[HomeViewController alloc]init];
     [self.navigationController pushViewController:home animated:YES];
@@ -255,12 +255,10 @@
                               @"phone":self.phone,
                               @"app":@"app2"
                               };
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        
-        [manager GET:@"http://app.52kb.cn:666/get_phone_code" parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSString *string = responseObject[@"msg"];
+        [YYHttpTool get:@"http://app.52kb.cn:666/get_phone_code" params:dic success:^(id responseObj) {
+            NSString *string = responseObj[@"msg"];
             NSLog(@"msg========%@",string);
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } failure:^(NSError *error) {
         }];
     }else{
         [self alertWith:@"请输入正确的手机号"];
@@ -272,25 +270,16 @@
                           @"phone":self.phone,
                           @"app":@"app2"
                           };
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager GET:@"http://app.52kb.cn:666/verify_phone_code" parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSString *string = responseObject[@"msg"];
+    [YYHttpTool get:@"http://app.52kb.cn:666/verify_phone_code" params:dic success:^(id responseObj) {
+        NSString *string = responseObj[@"msg"];
         NSLog(@"yanzheng======%@",string);
         if ([string integerValue]) {
-            [SVProgressHUD showSuccessWithStatus:@"验证成功"];
-            self.finishRegister = YES;
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-            });
+             self.finishRegister = YES;
+            [self successWith:@"验证成功"];
         } else{
-            [SVProgressHUD showErrorWithStatus:@"验证码错误"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-            });
+            [self alertWith:@"验证码错误"];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error");
+    } failure:^(NSError *error) {
     }];
 }
 
@@ -349,7 +338,16 @@
 }
 
 /**
- 提醒
+ 成功提醒
+ */
+- (void)successWith:(NSString *)string{
+    [SVProgressHUD showSuccessWithStatus:string];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+    });
+}
+/**
+ 错误提醒
  */
 - (void)alertWith:(NSString *)string{
     [SVProgressHUD showErrorWithStatus:string];

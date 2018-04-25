@@ -17,7 +17,7 @@
 // 定义这个常量，就可以让Masonry帮我们自动把基础数据类型的数据，自动装箱为对象类型。
 #define MAS_SHORTHAND_GLOBALS
 #import "Masonry.h"
-#import "AFNetworking.h"
+#import "YYHttpTool.h"
 @import GoogleMobileAds;
 @import Firebase;
 /*获取屏幕宽高*/
@@ -29,9 +29,9 @@
 
 /*自定义打印*/
 #ifdef DEBUG
-#define LRLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#define DaYin(...) NSLog(...)
 #else
-#define LRLog(...)
+#define DaYin(...)
 #endif
 
 /*颜色*/

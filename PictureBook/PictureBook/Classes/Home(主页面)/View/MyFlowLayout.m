@@ -14,12 +14,12 @@
     [super prepareLayout];
     
     if ([UIScreen mainScreen].bounds.size.width>400) {
-         self.itemSize=CGSizeMake(180, 180);
+         self.itemSize=CGSizeMake(180, 225);
     }
     else if([UIScreen mainScreen].bounds.size.width>350){
-        self.itemSize=CGSizeMake(160, 160);
+        self.itemSize=CGSizeMake(160, 200);
     }else{
-        self.itemSize=CGSizeMake(140, 140);
+        self.itemSize=CGSizeMake(140, 175);
     }
     self.minimumInteritemSpacing=10;
     self.minimumLineSpacing=15;

@@ -124,10 +124,10 @@
     NSDictionary *dic = @{
                           @"app":@"app2"
                           };
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:@"http://app.52kb.cn:666/get_shut_count" parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject[@"msg"]);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    [YYHttpTool get:@"http://app.52kb.cn:666/get_shut_count" params:dic success:^(id responseObj) {
+        NSString *string = responseObj[@"msg"];
+        NSLog(@"msg========%@",string);
+    } failure:^(NSError *error) {
         NSLog(@"error");
     }];
     [self completeRegister:@"0"];
@@ -156,11 +156,10 @@
                               @"organization":organization,
                               @"app":@"app2"
                               };
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager GET:@"http://app.52kb.cn:666/set_register_info" parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSString *string = responseObject[@"msg"];
-            NSLog(@"注册======%@",string);
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [YYHttpTool get:@"http://app.52kb.cn:666/set_register_info" params:dic success:^(id responseObj) {
+            NSString *string = responseObj[@"msg"];
+            NSLog(@"注册========%@",string);
+        } failure:^(NSError *error) {
             NSLog(@"error");
         }];
         HomeViewController *home = [[HomeViewController alloc]init];
