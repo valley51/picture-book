@@ -28,6 +28,8 @@ static NSString * const reuseID = @"PlayCell";
 @property(nonatomic,strong) UILabel *pageLabel;
 @property(nonatomic,strong) UIButton *leftButton;
 @property(nonatomic,strong) UIButton *rightButton;
+@property(nonatomic,strong) NSNumber *endTime;
+@property(nonatomic,assign) NSTimeInterval interval;
 
 @property(nonatomic,assign) int adCount;
 @property(nonatomic,strong) id timeObserver;
@@ -39,7 +41,6 @@ static NSString * const reuseID = @"PlayCell";
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
 }
-
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.tabBarController.tabBar.hidden = NO;
@@ -82,11 +83,34 @@ static NSString * const reuseID = @"PlayCell";
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
         [self->_player pause];
     }];
-    _timer = [NSTimer scheduledTimerWithTimeInterval: [self.intervals[_currenPage] doubleValue]+0.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        if (self->_currenPage<self->_pageCount-1) {
-            [self pageDown];
-        }
-    }];
+//    [self.intervals[_currenPage] doubleValue]+0.5
+//    while (_currenPage<_pageCount-1) {
+//        NSTimeInterval interval = [self.intervals[_currenPage] doubleValue]+0.5;
+//        _timer = [NSTimer scheduledTimerWithTimeInterval:interval repeats:NO block:^(NSTimer * _Nonnull timer) {
+//            if (self->_currenPage<self->_pageCount-1) {
+//                [self pageDown];
+//            }
+//        }];
+//    }
+    //平均值法
+//    NSTimeInterval interval = [_endTime floatValue]/ _pageCount +0.5;
+//    _timer = [NSTimer scheduledTimerWithTimeInterval:interval repeats:YES block:^(NSTimer * _Nonnull timer) {
+//        if (self->_currenPage<self->_pageCount-1) {
+//            [self pageDown];
+//        }
+//    }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(([self.intervals[_currenPage] doubleValue]+0.5)* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self pageDown];
+    });
+//    _interval = [self.intervals[_currenPage] doubleValue];
+//    _timer = [NSTimer scheduledTimerWithTimeInterval:3 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//        NSLog(@"%f",self->_interval);
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self->_interval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            if (self->_currenPage<self->_pageCount-1) {
+//                [self pageDown];
+//            }
+//        });
+//    }];
 //    __weak typeof(self) weakSelf = self;
 //    self.timeObserver = [_player addBoundaryTimeObserverForTimes:_times queue:dispatch_get_main_queue() usingBlock:^{
 //        __strong typeof (weakSelf) strongSelf = weakSelf;
@@ -153,18 +177,26 @@ static NSString * const reuseID = @"PlayCell";
     if (_currenPage>=0) {
         [self.playView setContentOffset:CGPointMake(x, y) animated:YES];
         self.currenPage -=1;
+        _interval = [self.intervals[_currenPage] doubleValue];
         [self setButtonEnabled];
         [self changeTime];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(([self.intervals[_currenPage] doubleValue]+0.5)* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self pageDown];
+        });
     }
 }
 - (void)pageDown{
     CGFloat x = self.playView.contentOffset.x + screenW;
     CGFloat y =self.playView.contentOffset.y;
-    if (_currenPage<_pageCount) {
+    if (_currenPage<_pageCount-1) {
         [self.playView setContentOffset:CGPointMake(x, y) animated:YES];
         self.currenPage +=1;
+        _interval = [self.intervals[_currenPage] doubleValue];
         [self setButtonEnabled];
         [self changeTime];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(([self.intervals[_currenPage] doubleValue]+0.5)* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self pageDown];
+        });
     }
 }
 
@@ -190,12 +222,16 @@ static NSString * const reuseID = @"PlayCell";
     self.currenPage = offsetX/screenW;
     [self setButtonEnabled];
     [self changeTime];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(([self.intervals[_currenPage] doubleValue]+0.5)* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self pageDown];
+    });
 }
 - (void)changeTime{
     if (_currenPage >=0) {
         NSValue *timeValue = self.times[_currenPage];
         CMTime timeCM = [timeValue CMTimeValue];
         [self.player seekToTime:timeCM];
+        [self.player play];
     }
 }
 /**
@@ -222,6 +258,7 @@ static NSString * const reuseID = @"PlayCell";
     NSString *endMin;
     NSString *endSec;
     float seconds;
+    float endSeconds;
     NSNumber *interval;
     CMTime secondTime;
     NSValue *time;
@@ -240,10 +277,10 @@ static NSString * const reuseID = @"PlayCell";
         
         endMin = [page.soundEnd substringWithRange:NSMakeRange(0, 1)];
         endSec = [page.soundEnd substringWithRange:NSMakeRange(2, 6)];
-        seconds = [endSec floatValue] + [endMin floatValue]*60;
-        secondTime = CMTimeMakeWithSeconds(seconds, 600);
-        interval = [NSNumber numberWithFloat:seconds];
+        endSeconds = [endSec floatValue] + [endMin floatValue]*60;
+        interval = [NSNumber numberWithDouble:(double)(endSeconds-seconds)];
         [self.intervals addObject:interval];
+        self.endTime = [NSNumber numberWithFloat:endSeconds];
     }
     self.pageCount = self.images.count;
 }
