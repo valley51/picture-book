@@ -14,10 +14,8 @@
 #import "MyCoViewCell.h"
 
 static NSString * const reuseID = @"PlayCell";
-@interface BookPlayViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,GADInterstitialDelegate>
 
-@property(nonatomic,strong) GADInterstitial *interstitial;
-
+@interface BookPlayViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property(nonatomic,strong) AVPlayer *player;
 @property(nonatomic,strong) NSTimer *timer;
@@ -74,7 +72,6 @@ static NSString * const reuseID = @"PlayCell";
     [super viewDidLoad];
     [self getAllData];
     [self setUp];
-    [self setInterstitial];
     _adCount = 0;
     NSString *mp3url = [NSString stringWithFormat:@"%@%@",self.rootUrl,self.bookData.mp3url];
     AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:mp3url]];
@@ -259,22 +256,4 @@ static NSString * const reuseID = @"PlayCell";
     [_timer invalidate];
     _timer = nil;
 }
-#pragma mark ============广告==============
-- (void)interstitialDidReceiveAd:(GADInterstitial *)ad{
-}
--(GADInterstitial *)setInterstitial
-{
-    self.interstitial=[[GADInterstitial alloc]initWithAdUnitID:@"ca-app-pub-3940256099942544/4411468910"];
-    self.interstitial.delegate=self;
-    GADRequest *request=[GADRequest request];
-    [self.interstitial loadRequest:request];
-    return self.interstitial;
-}
--(void)interstitialDidDismissScreen:(GADInterstitial *)ad
-{
-    [_player play];
-    self.interstitial=[self setInterstitial];
-}
-
-
 @end

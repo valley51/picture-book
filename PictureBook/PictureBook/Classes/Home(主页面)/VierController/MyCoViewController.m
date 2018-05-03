@@ -19,6 +19,7 @@
 @interface MyCoViewController ()<GADInterstitialDelegate>
 
 @property(nonatomic,strong) GADInterstitial *interstitial;
+@property(nonatomic,assign) NSInteger item;
 @property(nonatomic,strong) NSArray *bookStore;
 @end
 
@@ -92,31 +93,8 @@ static NSString * const reuseBanner = @"BannerCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([USER_DEFAULT boolForKey:@"register"]) {
-        NSInteger i = indexPath.item;
-        //1.获取绘本
-        Book *book = self.bookStore[i];
-        NSDictionary *dic = @{
-                              @"method":@"bookinfo",
-                              @"bookid":book.bookid
-                              };
+        _item = indexPath.item;
         [self.interstitial presentFromRootViewController:self];
-        [SVProgressHUD showWithStatus:@"正在为您加载绘本"];
-        [YYHttpTool get:@"http://app.52kb.cn:666/huiben.html" params:dic success:^(id responseObj) {
-            BookPlayViewController *bookPlay = [[BookPlayViewController alloc]init];
-            //2.传递数据
-            bookPlay.bookName = book.name;
-            bookPlay.rootUrl = responseObj[@"root"];
-            NSMutableArray *array = [BookData mj_objectArrayWithKeyValuesArray:responseObj[@"data"]];
-            bookPlay.bookData = [array firstObject];
-            //3.推出播放页面
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-                [self.navigationController pushViewController:bookPlay animated:YES];
-            });
-        } failure:^(NSError *error) {
-            
-        }];
-
     }else{
         //1.弹出提醒框
         UIAlertController *needRegister = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"您还没有注册，注册后可查看所有绘本哦～" preferredStyle:UIAlertControllerStyleAlert];
@@ -165,6 +143,28 @@ static NSString * const reuseBanner = @"BannerCell";
 }
 -(void)interstitialDidDismissScreen:(GADInterstitial *)ad
 {
+    //1.获取绘本
+    Book *book = self.bookStore[_item];
+    NSDictionary *dic = @{
+                          @"method":@"bookinfo",
+                          @"bookid":book.bookid
+                          };
+    [SVProgressHUD showWithStatus:@"正在为您加载绘本"];
+    [YYHttpTool get:@"http://app.52kb.cn:666/huiben.html" params:dic success:^(id responseObj) {
+        BookPlayViewController *bookPlay = [[BookPlayViewController alloc]init];
+        //2.传递数据
+        bookPlay.bookName = book.name;
+        bookPlay.rootUrl = responseObj[@"root"];
+        NSMutableArray *array = [BookData mj_objectArrayWithKeyValuesArray:responseObj[@"data"]];
+        bookPlay.bookData = [array firstObject];
+        //3.推出播放页面
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+            [self.navigationController pushViewController:bookPlay animated:YES];
+        });
+    } failure:^(NSError *error) {
+        
+    }];
     self.interstitial=[self setInterstitial];
 }
 
