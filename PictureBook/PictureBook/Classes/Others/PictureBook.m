@@ -33,8 +33,10 @@
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             ///要等DidFinished方法结束后才能初始化UIWindow，不然会检测是否有rootViewController
-//            [self show];
-            [self CheakAd];
+            if ([USER_DEFAULT boolForKey:@"register"]) {
+//                [self show];
+//                [self CheakAd];
+            }
         }];
         ///进入后台
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
@@ -42,15 +44,17 @@
         }];
         ///后台启动,二次开屏广告
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-//            [self show];
-            [self CheakAd];
+            if ([USER_DEFAULT boolForKey:@"register"]) {
+                [self show];
+                [self CheakAd];
+            }
         }];
     }
     return self;
     
 }
 - (void)CheakAd{
-    self.interstitial=[[GADInterstitial alloc]initWithAdUnitID:@"ca-app-pub-4903381575382292/2064290010"];
+    self.interstitial=[[GADInterstitial alloc]initWithAdUnitID:@"ca-app-pub-4903381575382292/8088901604"];
     self.interstitial.delegate=self;
     GADRequest *request=[GADRequest request];
     request.testDevices=@[ kGADSimulatorID ];

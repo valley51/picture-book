@@ -10,7 +10,8 @@
 #import "RegisterViewController.h"
 #import <UMMobClick/MobClick.h>
 #import "HomeViewController.h"
-#import "testViewController.h"
+#import <AVFoundation/AVFoundation.h>
+
 @interface AppDelegate ()
 @property(nonatomic,strong) UINavigationController *nav;
 @end
@@ -37,11 +38,14 @@
         self.window.rootViewController = self.nav;
     }else{
         HomeViewController *home = [[HomeViewController alloc]init];
-//        testViewController *home = [[testViewController alloc]init];
         self.window.rootViewController = home;
     }
     [self.window makeKeyAndVisible];
     [self loadGoogleAd];
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord
+             withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker
+                   error:nil];
     return YES;
 }
 -(void)loadGoogleAd{

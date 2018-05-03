@@ -10,6 +10,7 @@
 @class Book;
 @interface MyCoViewCell : UICollectionViewCell
 
+@property(nonatomic,assign) BOOL adCell;
 @property(nonatomic,strong) UIImageView *imageView;
 @property(nonatomic,strong) Book *cellBook;
 

@@ -13,6 +13,7 @@
 @property(nonatomic,strong) UIImageView *bookImage;
 @end
 @implementation MyCoViewCell
+
 - (void)setCellBook:(Book *)cellBook{
     _cellBook = cellBook;
     if (_imageView.subviews.count) {
@@ -28,12 +29,19 @@
     bookView.userInteractionEnabled = YES;
     bookView.image = cellImage;
     //书名
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(6, height-50, width-16, 40)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, height-50, width-16, 40)];
     label.text = _cellBook.name;
-    [label setTextAlignment:NSTextAlignmentCenter];
     label.numberOfLines = 0;
+    label.adjustsFontSizeToFitWidth = YES;
+    [label setTextAlignment:NSTextAlignmentCenter];
     [bookView addSubview:label];
     [_imageView addSubview:bookView];
+    
+    //上锁
+    UIImageView *lock = [[UIImageView alloc]initWithFrame:CGRectMake(width - 30, 0, 27.5, 32)];
+    lock.image = kGetImage(@"suo");
+    lock.hidden = [USER_DEFAULT boolForKey:@"register"];
+    [_imageView addSubview:lock];
 }
 -(UIImageView *)imageView
 {
@@ -44,12 +52,5 @@
     }
     return _imageView;
 }
-
-
-
-
-
-
-
 
 @end

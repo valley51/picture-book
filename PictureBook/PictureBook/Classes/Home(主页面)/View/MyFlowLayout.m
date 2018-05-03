@@ -12,18 +12,11 @@
 -(void)prepareLayout
 {
     [super prepareLayout];
-    
-    if ([UIScreen mainScreen].bounds.size.width>400) {
-         self.itemSize=CGSizeMake(180, 225);
-    }
-    else if([UIScreen mainScreen].bounds.size.width>350){
-        self.itemSize=CGSizeMake(160, 200);
-    }else{
-        self.itemSize=CGSizeMake(140, 175);
-    }
+    self.itemSize = CGSizeMake(screenW*0.5-40, (screenW*0.5-40)*1.2);
     self.minimumInteritemSpacing=10;
     self.minimumLineSpacing=15;
-    self.sectionInset=UIEdgeInsetsMake(15, 15, 15, 15);
+    CGFloat space = screenW *0.04;
+    self.sectionInset=UIEdgeInsetsMake(space,space, space, space);
     self.scrollDirection=UICollectionViewScrollDirectionVertical;
 }
 @end

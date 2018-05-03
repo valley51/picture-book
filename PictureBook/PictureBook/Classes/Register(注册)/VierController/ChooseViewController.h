@@ -11,4 +11,5 @@
 @interface ChooseViewController : UIViewController
 @property(nonatomic,strong) NSString *age;
 @property(nonatomic,strong) NSString *phone;
+@property(nonatomic,strong) NSString *name;
 @end

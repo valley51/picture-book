@@ -32,6 +32,11 @@
 @property(nonatomic,strong) UITextField *ageTF;
 @property(nonatomic,strong) UIPickerView *pick;
 @property(nonatomic,strong) NSArray *ageArray;
+
+//宝宝昵称
+@property(nonatomic,strong) UIImageView *nameIV;
+@property(nonatomic,strong) UITextField *nameTF;
+@property(nonatomic,strong) NSString *name;
 //注册按钮
 @property(nonatomic,strong) UIButton *regBtn;
 
@@ -85,10 +90,10 @@
     phoneTF.clearButtonMode = UITextFieldViewModeWhileEditing;
     phoneTF.keyboardType = UIKeyboardTypeDecimalPad;
     phoneTF.backgroundColor = [UIColor whiteColor];
-    phoneTF.placeholder = @"请输入手机号码                          ";
+    phoneTF.placeholder = @"请输入手机号码";
     phoneTF.tintColor = RGBColor(166, 100, 70);
+    phoneTF.delegate = self;
     self.phoneTF = phoneTF;
-    self.phoneTF.delegate = self;
     [self.view addSubview:phoneTF];
     //验证码
     UIImageView *cheakIV = [[UIImageView alloc]initWithImage:kGetImage(@"blo")];
@@ -99,12 +104,10 @@
     cheakTF.clearButtonMode = UITextFieldViewModeWhileEditing;
     cheakTF.keyboardType = UIKeyboardTypeDecimalPad;
     cheakTF.backgroundColor = [UIColor whiteColor];
-    cheakTF.placeholder = @"                                 ";
     self.cheakTF = cheakTF;
     self.cheakTF.delegate = self;
     [self.view addSubview:cheakTF];
     UIButton *getBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    getBtn.frame = CGRectMake(0, 0, 100, 38);
     getBtn.backgroundColor =RGBColor(166, 100, 70);
     [getBtn addTarget:self action:@selector(huoqu) forControlEvents:UIControlEventTouchUpInside];
     [getBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
@@ -122,11 +125,23 @@
     self.pick.dataSource = self;
     ageTF.inputView = self.pick;
     ageTF.backgroundColor = [UIColor whiteColor];
-    ageTF.placeholder = @"请选择孩子的年龄                         ";
+    ageTF.placeholder = @"请选择孩子的年龄";
     ageTF.tintColor = ClearColor;
     self.ageTF = ageTF;
     self.ageTF.delegate = self;
     [self.view addSubview:ageTF];
+    //宝宝昵称
+    UIImageView *nameIV = [[UIImageView alloc]initWithImage:kGetImage(@"name")];
+    self.nameIV = nameIV;
+    [self.view addSubview:nameIV];
+    UITextField *nameTF = [[UITextField alloc]init];
+    nameTF.borderStyle = UITextBorderStyleRoundedRect;
+    nameTF.backgroundColor = [UIColor whiteColor];
+    nameTF.placeholder = @"宝宝昵称";
+    nameTF.tintColor = ClearColor;
+    self.nameTF = nameTF;
+    self.nameTF.delegate = self;
+    [self.view addSubview:nameTF];
     //注册按钮
     UIImageView *iv = [[UIImageView alloc] initWithImage:kGetImage(@"button")];
     UIButton *button = [[UIButton alloc] initWithFrame:iv.frame];
@@ -140,6 +155,10 @@
  设置约束
  */
 - (void)setConstraits{
+    CGFloat lineSpace = 30;
+    if (iphone5s) {
+        lineSpace = 15;
+    }
     [self.skipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(20);
         make.right.equalTo(self.view).offset(-20);
@@ -153,35 +172,58 @@
         make.centerX.equalTo(self.view);
     }];
     [self.phoneIV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(40);
+        make.width.height.equalTo(32);
+        make.right.equalTo(self.phoneTF.left).offset(-10);
         make.top.equalTo(self.logoLabel.bottom).offset(50);
     }];
+    
     [self.phoneTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.phoneIV.right).offset(20);
+        make.width.equalTo(screenW*0.6);
+        make.height.equalTo(40);
+        make.centerX.equalTo(self.view.centerX).offset(20);
         make.top.bottom.equalTo(self.phoneIV);
     }];
     [self.cheakIV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(40);
-        make.top.equalTo(self.phoneIV.bottom).offset(30);
+        make.width.height.equalTo(32);
+        make.left.equalTo(self.phoneIV);
+        make.top.equalTo(self.phoneIV.bottom).offset(lineSpace);
     }];
     [self.cheakTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.cheakIV.right).offset(20);
-         make.top.bottom.equalTo(self.cheakIV);
+        make.width.equalTo(screenW*0.3);
+        make.height.equalTo(40);
+        make.left.equalTo(self.cheakIV.right).offset(10);
+        make.top.bottom.equalTo(self.cheakIV);
     }];
     [self.getBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(screenW*0.3);
+        make.height.equalTo(32);
         make.left.equalTo(self.cheakTF.right).offset(2);
         make.top.equalTo(self.cheakTF);
     }];
     [self.ageIV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(40);
-        make.top.equalTo(self.cheakIV.bottom).offset(30);
+        make.width.height.equalTo(32);
+        make.left.equalTo(self.phoneIV);
+        make.top.equalTo(self.cheakIV.bottom).offset(lineSpace);
     }];
     [self.ageTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.ageIV.right).offset(20);
+        make.width.equalTo(screenW*0.6);
+        make.height.equalTo(40);
+        make.left.equalTo(self.ageIV.right).offset(10);
         make.top.bottom.equalTo(self.ageIV);
     }];
+    [self.nameIV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.equalTo(32);
+        make.left.equalTo(self.phoneIV);
+        make.top.equalTo(self.ageTF.bottom).offset(lineSpace);
+    }];
+    [self.nameTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(screenW*0.6);
+        make.height.equalTo(40);
+        make.left.equalTo(self.nameIV.right).offset(10);
+        make.top.bottom.equalTo(self.nameIV);
+    }];
     [self.regBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.ageTF).offset(100);
+        make.top.equalTo(self.nameTF).offset(lineSpace*3);
         make.left.equalTo(self.view).offset((screenW-self.regBtn.frame.size.width)*0.5);
     }];
 }
@@ -207,14 +249,18 @@
     [self.ageTF resignFirstResponder];
     [self.cheakTF resignFirstResponder];
     [self.phoneTF resignFirstResponder];
+    [self.nameTF resignFirstResponder];
 }
 #pragma mark ============输入框代理==============
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField == self.phoneTF) {
         self.phone = self.phoneTF.text;
     }else if (textField == self.cheakTF && self.cheakTF.text.length>0){
+        
         self.code = self.cheakTF.text;
         [self yanzheng];
+    }else if (textField == self.nameTF){
+        self.name = self.nameTF.text;
     }
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
@@ -242,7 +288,7 @@
 - (void)skip{
     [USER_DEFAULT setBool:YES forKey:@"firstTime"];
     HomeViewController *home = [[HomeViewController alloc]init];
-    [self.navigationController pushViewController:home animated:YES];
+    [[UIApplication sharedApplication].keyWindow setRootViewController:home];
 }
 
 /**
@@ -251,6 +297,9 @@
 - (void)huoqu{
     [self.phoneTF endEditing:YES];
     if ([self valiMobile:self.phone]) {
+        self.getBtn.enabled = NO;
+        self.getBtn.backgroundColor = [UIColor colorWithRed:166/255.0 green:100/255.0 blue:70/255.0 alpha:0.7];
+        [self.getBtn setTitle:@"已发送" forState:UIControlStateNormal];
         NSDictionary *dic = @{
                               @"phone":self.phone,
                               @"app":@"app2"
@@ -273,13 +322,15 @@
     [YYHttpTool get:@"http://app.52kb.cn:666/verify_phone_code" params:dic success:^(id responseObj) {
         NSString *string = responseObj[@"msg"];
         NSLog(@"yanzheng======%@",string);
-        if ([string integerValue]) {
+        if ([string isEqualToString:@"null"]) {
              self.finishRegister = YES;
             [self successWith:@"验证成功"];
         } else{
             [self alertWith:@"验证码错误"];
         }
     } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+        [self alertWith:@"验证失败"];
     }];
 }
 
@@ -325,15 +376,18 @@
  完成注册
  */
 - (void)zhuce{
-    if (self.ageTF.text.length>0 && self.finishRegister) {
+    if (self.ageTF.text.length>0 && self.finishRegister && self.nameTF.text.length>0) {
         ChooseViewController *choose = [[ChooseViewController alloc]init];
         choose.age = self.ageTF.text;
         choose.phone = self.phone;
+        choose.name = self.nameTF.text;
         [self.navigationController pushViewController:choose animated:YES];
-    }else if (self.ageTF.text.length>0){
+    }else if (self.ageTF.text.length>0 && self.nameTF.text.length>0){
         [self alertWith:@"请输入正确的验证码"];
+    }else if (self.ageTF.text.length>0){
+        [self alertWith:@"为宝宝取个好听的名字吧～"];
     }else{
-        [self alertWith:@"请选择年龄"];
+        [self alertWith:@"请选择宝宝的年龄"];
     }
 }
 

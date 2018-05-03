@@ -14,6 +14,8 @@
 		DE1D1DF7208D7FD400739915 /* MyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1D1DF6208D7FD400739915 /* MyFlowLayout.m */; };
 		DE1D1DFA208D8AF500739915 /* MyCoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1D1DF9208D8AF500739915 /* MyCoViewController.m */; };
 		DE1D1DFD208D8E7100739915 /* MyCoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1D1DFC208D8E7100739915 /* MyCoViewCell.m */; };
+		DE25091C20941FE400B09781 /* BannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE25091B20941FE400B09781 /* BannerCell.m */; };
+		DE25091F2094486B00B09781 /* CoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE25091E2094486B00B09781 /* CoverView.m */; };
 		DE2616152089DB4F00B95CEE /* PictureBook.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2616142089DB4F00B95CEE /* PictureBook.m */; };
 		DE2616182089E18900B95CEE /* PictureBook.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = DE2616162089E18900B95CEE /* PictureBook.mobileprovision */; };
 		DE2616192089E18900B95CEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE2616172089E18900B95CEE /* GoogleService-Info.plist */; };
@@ -23,9 +25,9 @@
 		DE2ECB1B2085F8C8009C4B36 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB1A2085F8C8009C4B36 /* main.m */; };
 		DE2ECB252085F8C8009C4B36 /* PictureBookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB242085F8C8009C4B36 /* PictureBookTests.m */; };
 		DE2ECB302085F8C8009C4B36 /* PictureBookUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2ECB2F2085F8C8009C4B36 /* PictureBookUITests.m */; };
+		DE6D9FC4209165FB00C7B80F /* PlayFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6D9FC3209165FB00C7B80F /* PlayFlowLayout.m */; };
+		DE6D9FC72091BA9700C7B80F /* DownloadAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6D9FC62091BA9700C7B80F /* DownloadAudioTool.m */; };
 		DE8831352090159E0001972B /* UIImage+CellImage.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8831342090159E0001972B /* UIImage+CellImage.m */; };
-		DE88313E2090291A0001972B /* testViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE88313C2090291A0001972B /* testViewController.m */; };
-		DE88313F2090291A0001972B /* testViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE88313D2090291A0001972B /* testViewController.xib */; };
 		DE88314220906D2D0001972B /* BookPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE88314120906D2D0001972B /* BookPlayViewController.m */; };
 		DE883145209075D40001972B /* BookData.m in Sources */ = {isa = PBXBuildFile; fileRef = DE883144209075D40001972B /* BookData.m */; };
 		DE883148209075F90001972B /* SinglePage.m in Sources */ = {isa = PBXBuildFile; fileRef = DE883147209075F90001972B /* SinglePage.m */; };
@@ -70,6 +72,10 @@
 		DE1D1DF9208D8AF500739915 /* MyCoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCoViewController.m; sourceTree = "<group>"; };
 		DE1D1DFB208D8E7100739915 /* MyCoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCoViewCell.h; sourceTree = "<group>"; };
 		DE1D1DFC208D8E7100739915 /* MyCoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCoViewCell.m; sourceTree = "<group>"; };
+		DE25091A20941FE400B09781 /* BannerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerCell.h; sourceTree = "<group>"; };
+		DE25091B20941FE400B09781 /* BannerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerCell.m; sourceTree = "<group>"; };
+		DE25091D2094486B00B09781 /* CoverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoverView.h; sourceTree = "<group>"; };
+		DE25091E2094486B00B09781 /* CoverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoverView.m; sourceTree = "<group>"; };
 		DE2616132089DB4F00B95CEE /* PictureBook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureBook.h; sourceTree = "<group>"; };
 		DE2616142089DB4F00B95CEE /* PictureBook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureBook.m; sourceTree = "<group>"; };
 		DE2616162089E18900B95CEE /* PictureBook.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = PictureBook.mobileprovision; sourceTree = "<group>"; };
@@ -87,11 +93,12 @@
 		DE2ECB2B2085F8C8009C4B36 /* PictureBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictureBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2ECB2F2085F8C8009C4B36 /* PictureBookUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureBookUITests.m; sourceTree = "<group>"; };
 		DE2ECB312085F8C8009C4B36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE6D9FC2209165FB00C7B80F /* PlayFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlayFlowLayout.h; path = "PictureBook/Classes/Play(播放页面)/View/PlayFlowLayout.h"; sourceTree = SOURCE_ROOT; };
+		DE6D9FC3209165FB00C7B80F /* PlayFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PlayFlowLayout.m; path = "PictureBook/Classes/Play(播放页面)/View/PlayFlowLayout.m"; sourceTree = SOURCE_ROOT; };
+		DE6D9FC52091BA9700C7B80F /* DownloadAudioTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadAudioTool.h; sourceTree = "<group>"; };
+		DE6D9FC62091BA9700C7B80F /* DownloadAudioTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadAudioTool.m; sourceTree = "<group>"; };
 		DE8831332090159E0001972B /* UIImage+CellImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+CellImage.h"; sourceTree = "<group>"; };
 		DE8831342090159E0001972B /* UIImage+CellImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CellImage.m"; sourceTree = "<group>"; };
-		DE88313B2090291A0001972B /* testViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testViewController.h; sourceTree = "<group>"; };
-		DE88313C2090291A0001972B /* testViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testViewController.m; sourceTree = "<group>"; };
-		DE88313D2090291A0001972B /* testViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = testViewController.xib; sourceTree = "<group>"; };
 		DE88314020906D2D0001972B /* BookPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookPlayViewController.h; sourceTree = "<group>"; };
 		DE88314120906D2D0001972B /* BookPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookPlayViewController.m; sourceTree = "<group>"; };
 		DE883143209075D40001972B /* BookData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookData.h; sourceTree = "<group>"; };
@@ -105,6 +112,7 @@
 		DE8B50262087373500D3057E /* ChooseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseViewController.m; sourceTree = "<group>"; };
 		DE8B502B20873B8000D3057E /* ChooseButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseButton.h; sourceTree = "<group>"; };
 		DE8B502C20873B8000D3057E /* ChooseButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseButton.m; sourceTree = "<group>"; };
+		DECC91B420985CC10027B7E2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		DED153B1208F047B00475AF5 /* YYHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYHttpTool.h; sourceTree = "<group>"; };
 		DED153B2208F047B00475AF5 /* YYHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYHttpTool.m; sourceTree = "<group>"; };
 		DED153B4208F2A1900475AF5 /* Book.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
@@ -220,7 +228,6 @@
 		DE8831222090139F0001972B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DE88313A209028F70001972B /* 测试 */,
 				DE88312B2090139F0001972B /* Others */,
 				DE8831232090139F0001972B /* Play(播放页面) */,
 				DE8831272090139F0001972B /* Home(主页面) */,
@@ -262,6 +269,8 @@
 		DE8831262090139F0001972B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DE6D9FC2209165FB00C7B80F /* PlayFlowLayout.h */,
+				DE6D9FC3209165FB00C7B80F /* PlayFlowLayout.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -303,6 +312,10 @@
 				DE1D1DF6208D7FD400739915 /* MyFlowLayout.m */,
 				DE1D1DFB208D8E7100739915 /* MyCoViewCell.h */,
 				DE1D1DFC208D8E7100739915 /* MyCoViewCell.m */,
+				DE25091A20941FE400B09781 /* BannerCell.h */,
+				DE25091B20941FE400B09781 /* BannerCell.m */,
+				DE25091D2094486B00B09781 /* CoverView.h */,
+				DE25091E2094486B00B09781 /* CoverView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,6 +356,8 @@
 			children = (
 				DED153B1208F047B00475AF5 /* YYHttpTool.h */,
 				DED153B2208F047B00475AF5 /* YYHttpTool.m */,
+				DE6D9FC52091BA9700C7B80F /* DownloadAudioTool.h */,
+				DE6D9FC62091BA9700C7B80F /* DownloadAudioTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -382,16 +397,6 @@
 				DE8B502C20873B8000D3057E /* ChooseButton.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		DE88313A209028F70001972B /* 测试 */ = {
-			isa = PBXGroup;
-			children = (
-				DE88313B2090291A0001972B /* testViewController.h */,
-				DE88313C2090291A0001972B /* testViewController.m */,
-				DE88313D2090291A0001972B /* testViewController.xib */,
-			);
-			path = "测试";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,7 +510,6 @@
 				DE2616182089E18900B95CEE /* PictureBook.mobileprovision in Resources */,
 				DE2ECB152085F8C8009C4B36 /* Assets.xcassets in Resources */,
 				DE2616192089E18900B95CEE /* GoogleService-Info.plist in Resources */,
-				DE88313F2090291A0001972B /* testViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,9 +609,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE25091F2094486B00B09781 /* CoverView.m in Sources */,
 				DE1D1DFA208D8AF500739915 /* MyCoViewController.m in Sources */,
+				DE6D9FC4209165FB00C7B80F /* PlayFlowLayout.m in Sources */,
 				DE2ECB1B2085F8C8009C4B36 /* main.m in Sources */,
 				DE8831352090159E0001972B /* UIImage+CellImage.m in Sources */,
+				DE6D9FC72091BA9700C7B80F /* DownloadAudioTool.m in Sources */,
 				DE2616152089DB4F00B95CEE /* PictureBook.m in Sources */,
 				DE88314220906D2D0001972B /* BookPlayViewController.m in Sources */,
 				DED153B3208F047B00475AF5 /* YYHttpTool.m in Sources */,
@@ -615,11 +622,11 @@
 				DE8B502D20873B8000D3057E /* ChooseButton.m in Sources */,
 				DE8B50272087373500D3057E /* ChooseViewController.m in Sources */,
 				DE8B50232086E31200D3057E /* RegisterViewController.m in Sources */,
+				DE25091C20941FE400B09781 /* BannerCell.m in Sources */,
 				DE883145209075D40001972B /* BookData.m in Sources */,
 				DE1D1DF7208D7FD400739915 /* MyFlowLayout.m in Sources */,
 				DE1D1DFD208D8E7100739915 /* MyCoViewCell.m in Sources */,
 				DE2ECB0D2085F8C7009C4B36 /* AppDelegate.m in Sources */,
-				DE88313E2090291A0001972B /* testViewController.m in Sources */,
 				DE1D1DF4208D772D00739915 /* HomeViewController.m in Sources */,
 				DE883148209075F90001972B /* SinglePage.m in Sources */,
 			);
@@ -661,6 +668,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				DE2ECB172085F8C8009C4B36 /* Base */,
+				DECC91B420985CC10027B7E2 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -672,6 +680,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -700,9 +709,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: fangyi Qu (9776K73TVD)";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 335U7J4U2G;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -719,9 +730,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "8fc01484-ab7e-4a80-8fea-451dc43069a5";
+				PROVISIONING_PROFILE_SPECIFIER = PictureBook;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -730,6 +743,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -758,9 +772,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: fangyi Qu (335U7J4U2G)";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 335U7J4U2G;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -771,8 +787,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "8fc01484-ab7e-4a80-8fea-451dc43069a5";
+				PROVISIONING_PROFILE_SPECIFIER = PictureBook;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -788,14 +806,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PictureBook/Classes/Others/PictureBook.pch;
 				INFOPLIST_FILE = PictureBook/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zaoliedu.PictureBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = PictureBook;
+				PROVISIONING_PROFILE = "95d12b89-3ee5-4afa-be20-e4342b2f5660";
+				PROVISIONING_PROFILE_SPECIFIER = testPB;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -811,7 +830,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PictureBook/Classes/Others/PictureBook.pch;
 				INFOPLIST_FILE = PictureBook/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

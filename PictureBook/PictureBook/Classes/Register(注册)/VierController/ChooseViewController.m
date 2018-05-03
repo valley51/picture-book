@@ -45,22 +45,28 @@
     [sbtn addTarget:self action:@selector(skip) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:sbtn];
     self.skipBtn = sbtn;
+    CGFloat headSize = 18;
+    CGFloat otherSize = 16;
+    if (iphone5s) {
+        headSize = 14;
+        otherSize = 12;
+    }
     //提醒label
     UILabel *gongxi = [[UILabel alloc]init];
     gongxi.text = @"恭喜您为宝宝领取了价值388元的英语课程";
-    gongxi.font = [UIFont systemFontOfSize:18 weight:UIFontWeightBold];
+    gongxi.font = [UIFont systemFontOfSize:headSize weight:UIFontWeightBold];
     gongxi.textColor = RGBColor(25, 98, 139);
     self.gongxi = gongxi;
     [self.view addSubview:gongxi];
     UILabel *tixing = [[UILabel alloc]init];
     tixing.text = @"温馨提醒";
-    tixing.font = [UIFont systemFontOfSize:16 weight:UIFontWeightThin];
+    tixing.font = [UIFont systemFontOfSize:otherSize weight:UIFontWeightThin];
     tixing.textColor = RGBColor(25, 98, 139);
     self.tixing = tixing;
     [self.view addSubview:tixing];
     UILabel *jianyi = [[UILabel alloc]init];
     jianyi.text = @"建议试听多家，多对比对您的选择有更大帮助。";
-    jianyi.font = [UIFont systemFontOfSize:16 weight:UIFontWeightThin];
+    jianyi.font = [UIFont systemFontOfSize:otherSize weight:UIFontWeightThin];
     jianyi.textColor = RGBColor(25, 98, 139);
     self.jianyi = jianyi;
     [self.view addSubview:jianyi];
@@ -93,29 +99,28 @@
     }];
     [self.gongxi mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(80);
-        make.left.equalTo(self.view).offset(20);
+        make.centerX.equalTo(self.view);
     }];
     [self.tixing mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.gongxi.bottom).offset(40);
-        make.left.equalTo(self.view).offset(20);
+        make.left.equalTo(self.jianyi);
     }];
     [self.jianyi mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.tixing.bottom).offset(5);
-        make.left.equalTo(self.view).offset(20);
+        make.centerX.equalTo(self.view);
     }];
     for (int i = 0; i<4; i++) {
         ChooseButton *button = self.tmp[i];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.jianyi.bottom).offset(20+50*i);
-            make.left.equalTo(self.view).offset(50);
+            make.left.equalTo(self.allBtn);
         }];
     }
     [self.allBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.jianyi.bottom).offset(20+50*4);
-        make.left.equalTo(self.view).offset(50);
+        make.left.equalTo(self.jianyi).offset(10);
     }];
     [self.sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        //需要适配/////////////
         make.top.equalTo(self.allBtn.bottom).offset(100);
         make.centerX.equalTo(self.view);
     }];
@@ -151,6 +156,7 @@
 - (void)completeRegister:(NSString *)organization{
     if (organization.length>0) {
         NSDictionary *dic = @{
+                              @"name":self.name,
                               @"age":self.age,
                               @"phone":self.phone,
                               @"organization":organization,
@@ -163,7 +169,7 @@
             NSLog(@"error");
         }];
         HomeViewController *home = [[HomeViewController alloc]init];
-        [self.navigationController pushViewController:home animated:YES];
+        [[UIApplication sharedApplication].keyWindow setRootViewController:home];
         [USER_DEFAULT setBool:YES forKey:@"register"];
     }else{
         [self alertWith:@"您还没有选择要试听的机构呢～"];

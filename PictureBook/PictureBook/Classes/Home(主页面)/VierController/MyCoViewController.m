@@ -8,18 +8,23 @@
 
 #import "MyCoViewController.h"
 #import "MyCoViewCell.h"
+#import "BannerCell.h"
 #import "Book.h"
 #import "MJExtension.h"
-#import <SDImageCache.h>
 #import "BookPlayViewController.h"
 #import "BookData.h"
+#import "RegisterViewController.h"
+#import "SVProgressHUD.h"
+
 @interface MyCoViewController ()
+
 @property(nonatomic,strong) NSArray *bookStore;
 @end
 
 @implementation MyCoViewController
 
 static NSString * const reuseIdentifier = @"Cell";
+static NSString * const reuseBanner = @"BannerCell";
 - (void)getBookWith:(NSString *)age{
     NSDictionary *dic = @{
                           @"method":@"bookinfos",
@@ -49,15 +54,9 @@ static NSString * const reuseIdentifier = @"Cell";
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
     [self.collectionView registerClass:[MyCoViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
-}
+    [self.collectionView registerClass:[BannerCell class] forCellWithReuseIdentifier:reuseBanner];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -67,53 +66,73 @@ static NSString * const reuseIdentifier = @"Cell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.bookStore.count;
+    NSInteger i = self.bookStore.count;
+    return i;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    MyCoViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    cell.imageView.image = kGetImage(@"book");
-    cell.cellBook = self.bookStore[indexPath.item];
-    
-    return cell;
+    if ([USER_DEFAULT boolForKey:@"register"]){
+        NSInteger i = indexPath.item;
+        MyCoViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+        cell.imageView.image = kGetImage(@"book");
+        cell.cellBook = self.bookStore[i];
+        return cell;
+    }else{
+        MyCoViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+        cell.imageView.image = kGetImage(@"book");
+        cell.cellBook = self.bookStore[indexPath.item];
+        return cell;
+    }
+
 }
 
 #pragma mark <UICollectionViewDelegate>
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%zd",indexPath.item);
-    //1.获取绘本
-    Book *book = self.bookStore[indexPath.item];
-    NSDictionary *dic = @{
-                          @"method":@"bookinfo",
-                          @"bookid":book.bookid
-                          };
-    [YYHttpTool get:@"http://app.52kb.cn:666/huiben.html" params:dic success:^(id responseObj) {
-        NSLog(@"%@",responseObj);
-        BookPlayViewController *bookPlay = [[BookPlayViewController alloc]init];
-        bookPlay.bookName = book.name;
-        bookPlay.rootUrl = responseObj[@"root"];
-        NSMutableArray *array = [BookData mj_objectArrayWithKeyValuesArray:responseObj[@"data"]];
-        bookPlay.bookData = [array firstObject];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.navigationController pushViewController:bookPlay animated:YES];
-        });
-    } failure:^(NSError *error) {
-        
-    }];
-    //2.传递数据
-    //3.推出播放页面
+    if ([USER_DEFAULT boolForKey:@"register"]) {
+        NSInteger i = indexPath.item;
+        //1.获取绘本
+        Book *book = self.bookStore[i];
+        NSDictionary *dic = @{
+                              @"method":@"bookinfo",
+                              @"bookid":book.bookid
+                              };
+        [SVProgressHUD showWithStatus:@"正在为您加载绘本"];
+        [YYHttpTool get:@"http://app.52kb.cn:666/huiben.html" params:dic success:^(id responseObj) {
+            BookPlayViewController *bookPlay = [[BookPlayViewController alloc]init];
+            //2.传递数据
+            bookPlay.bookName = book.name;
+            bookPlay.rootUrl = responseObj[@"root"];
+            NSMutableArray *array = [BookData mj_objectArrayWithKeyValuesArray:responseObj[@"data"]];
+            bookPlay.bookData = [array firstObject];
+            //3.推出播放页面
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+                [self.navigationController pushViewController:bookPlay animated:YES];
+            });
+        } failure:^(NSError *error) {
+            
+        }];
+
+    }else{
+        //1.弹出提醒框
+        UIAlertController *needRegister = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"您还没有注册，注册后可查看所有绘本哦～" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAciton = [UIAlertAction actionWithTitle:@"拒绝注册" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            NSLog(@"取消");
+        }];
+        UIAlertAction *goAciton = [UIAlertAction actionWithTitle:@"这就去注册" style:0 handler:^(UIAlertAction * _Nonnull action) {
+            RegisterViewController *rvc = [[RegisterViewController alloc]init];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:rvc];
+            nav.navigationBar.hidden = YES;
+            [self presentViewController:nav animated:YES completion:nil];
+        }];
+        [needRegister addAction:cancelAciton];
+        [needRegister addAction:goAciton];
+        //2.点击弹出注册界面
+        [self presentViewController:needRegister animated:YES completion:nil];
+    }
     
-    
-    
-    
-    
+
 }
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
