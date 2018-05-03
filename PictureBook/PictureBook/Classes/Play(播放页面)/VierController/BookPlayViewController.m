@@ -18,11 +18,13 @@ static NSString * const reuseID = @"PlayCell";
 
 @property(nonatomic,strong) GADInterstitial *interstitial;
 
-//@property(nonatomic,strong) AVAudioPlayer *audio;
+
 @property(nonatomic,strong) AVPlayer *player;
+@property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,strong) UICollectionView *playView;
 @property(nonatomic,strong) NSMutableArray<UIImage *> *images;
 @property(nonatomic,strong) NSMutableArray<NSValue *> *times;
+@property(nonatomic,strong) NSMutableArray *intervals;
 @property(nonatomic,assign) NSInteger pageCount;
 @property(nonatomic,assign) NSInteger currenPage;
 @property(nonatomic,strong) UILabel *pageLabel;
@@ -45,6 +47,11 @@ static NSString * const reuseID = @"PlayCell";
     self.tabBarController.tabBar.hidden = NO;
     [_player pause];
 }
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [_timer invalidate];
+    _timer = nil;
+}
 - (NSMutableArray<UIImage *> *)images{
     if (_images == nil) {
         _images = [NSMutableArray array];
@@ -57,6 +64,12 @@ static NSString * const reuseID = @"PlayCell";
     }
     return _times;
 }
+- (NSMutableArray *)intervals{
+    if (_intervals == nil) {
+        _intervals = [NSMutableArray array];
+    }
+    return _intervals;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getAllData];
@@ -64,31 +77,33 @@ static NSString * const reuseID = @"PlayCell";
     [self setInterstitial];
     _adCount = 0;
     NSString *mp3url = [NSString stringWithFormat:@"%@%@",self.rootUrl,self.bookData.mp3url];
-    AVPlayer *player = [AVPlayer playerWithURL:[NSURL URLWithString:mp3url]];
     AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:mp3url]];
-    [player replaceCurrentItemWithPlayerItem:item];
+    AVPlayer *player = [[AVPlayer alloc]initWithPlayerItem:item];
     _player = player;
-    [self showAD];
     [self changeTime];
     [_player play];
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
         [self->_player pause];
     }];
-    __weak typeof(self) weakSelf = self;
-    self.timeObserver = [_player addBoundaryTimeObserverForTimes:_times queue:dispatch_get_main_queue() usingBlock:^{
-        __strong typeof (weakSelf) strongSelf = weakSelf;
-        if (strongSelf) {
-            [strongSelf.player pause];
+    _timer = [NSTimer scheduledTimerWithTimeInterval: [self.intervals[_currenPage] doubleValue]+0.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        if (self->_currenPage<self->_pageCount-1) {
+            [self pageDown];
         }
     }];
+//    __weak typeof(self) weakSelf = self;
+//    self.timeObserver = [_player addBoundaryTimeObserverForTimes:_times queue:dispatch_get_main_queue() usingBlock:^{
+//        __strong typeof (weakSelf) strongSelf = weakSelf;
+//        if (strongSelf) {
+//            [strongSelf.player pause];
+//        }
+//    }];
 }
 
 //界面设置
 - (void)setUp{
     //导航按钮
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[kGetImage(@"back") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[kGetImage(@"s") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[kGetImage(@"s") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(changeTime)];
     self.navigationItem.title = self.bookName;
     
     //展示界面
@@ -138,30 +153,24 @@ static NSString * const reuseID = @"PlayCell";
 - (void)pageUp{
     CGFloat x = self.playView.contentOffset.x - screenW;
     CGFloat y =self.playView.contentOffset.y;
-    [self.playView setContentOffset:CGPointMake(x, y) animated:YES];
-    self.currenPage -=1;
-    [self showAD];
-    [self setButtonEnabled];
-    [self changeTime];
+    if (_currenPage>=0) {
+        [self.playView setContentOffset:CGPointMake(x, y) animated:YES];
+        self.currenPage -=1;
+        [self setButtonEnabled];
+        [self changeTime];
+    }
 }
 - (void)pageDown{
     CGFloat x = self.playView.contentOffset.x + screenW;
     CGFloat y =self.playView.contentOffset.y;
-    [self.playView setContentOffset:CGPointMake(x, y) animated:YES];
-    self.currenPage +=1;
-    [self showAD];
-    [self setButtonEnabled];
-    [self changeTime];
-}
-- (void)showAD{
-    self.adCount += 1;
-    if (_adCount%5==0) {
-        [_player pause];
-       [self.interstitial presentFromRootViewController:self];
-    }else{
-        [_player play];
+    if (_currenPage<_pageCount) {
+        [self.playView setContentOffset:CGPointMake(x, y) animated:YES];
+        self.currenPage +=1;
+        [self setButtonEnabled];
+        [self changeTime];
     }
 }
+
 #pragma mark ============datasoure==============
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -182,7 +191,6 @@ static NSString * const reuseID = @"PlayCell";
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     CGFloat offsetX = scrollView.contentOffset.x;
     self.currenPage = offsetX/screenW;
-    [self showAD];
     [self setButtonEnabled];
     [self changeTime];
 }
@@ -217,11 +225,9 @@ static NSString * const reuseID = @"PlayCell";
     NSString *endMin;
     NSString *endSec;
     float seconds;
+    NSNumber *interval;
     CMTime secondTime;
     NSValue *time;
-//    CMTime secondTime = CMTimeMakeWithSeconds(0, 600);
-//    NSValue *time = [NSValue valueWithCMTime:secondTime];
-//    [self.times addObject:time];
     for (SinglePage *page in array) {
         //加载图片
         URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",self.rootUrl,page.imgUrl]];
@@ -231,10 +237,16 @@ static NSString * const reuseID = @"PlayCell";
         endMin = [page.soundBegin substringWithRange:NSMakeRange(0, 1)];
         endSec = [page.soundBegin substringWithRange:NSMakeRange(2, 6)];
         seconds = [endSec floatValue] + [endMin floatValue]*60;
-        NSLog(@"=================%f",seconds);
         secondTime = CMTimeMakeWithSeconds(seconds, 600);
         time = [NSValue valueWithCMTime:secondTime];
         [self.times addObject:time];
+        
+        endMin = [page.soundEnd substringWithRange:NSMakeRange(0, 1)];
+        endSec = [page.soundEnd substringWithRange:NSMakeRange(2, 6)];
+        seconds = [endSec floatValue] + [endMin floatValue]*60;
+        secondTime = CMTimeMakeWithSeconds(seconds, 600);
+        interval = [NSNumber numberWithFloat:seconds];
+        [self.intervals addObject:interval];
     }
     self.pageCount = self.images.count;
 }
@@ -244,6 +256,8 @@ static NSString * const reuseID = @"PlayCell";
 
 - (void)dealloc{
     [_player removeTimeObserver:_timeObserver];
+    [_timer invalidate];
+    _timer = nil;
 }
 #pragma mark ============广告==============
 - (void)interstitialDidReceiveAd:(GADInterstitial *)ad{

@@ -34,8 +34,8 @@
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             ///要等DidFinished方法结束后才能初始化UIWindow，不然会检测是否有rootViewController
             if ([USER_DEFAULT boolForKey:@"register"]) {
-//                [self show];
-//                [self CheakAd];
+                [self show];
+                [self CheakAd];
             }
         }];
         ///进入后台

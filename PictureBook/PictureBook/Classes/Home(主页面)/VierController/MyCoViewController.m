@@ -16,8 +16,9 @@
 #import "RegisterViewController.h"
 #import "SVProgressHUD.h"
 
-@interface MyCoViewController ()
+@interface MyCoViewController ()<GADInterstitialDelegate>
 
+@property(nonatomic,strong) GADInterstitial *interstitial;
 @property(nonatomic,strong) NSArray *bookStore;
 @end
 
@@ -50,6 +51,7 @@ static NSString * const reuseBanner = @"BannerCell";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setInterstitial];
     self.collectionView.backgroundColor = RGBColor(254, 212, 98);
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -97,6 +99,7 @@ static NSString * const reuseBanner = @"BannerCell";
                               @"method":@"bookinfo",
                               @"bookid":book.bookid
                               };
+        [self.interstitial presentFromRootViewController:self];
         [SVProgressHUD showWithStatus:@"正在为您加载绘本"];
         [YYHttpTool get:@"http://app.52kb.cn:666/huiben.html" params:dic success:^(id responseObj) {
             BookPlayViewController *bookPlay = [[BookPlayViewController alloc]init];
@@ -149,5 +152,21 @@ static NSString * const reuseBanner = @"BannerCell";
 - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
 	
 }
+#pragma mark ============广告==============
+- (void)interstitialDidReceiveAd:(GADInterstitial *)ad{
+}
+-(GADInterstitial *)setInterstitial
+{
+    self.interstitial=[[GADInterstitial alloc]initWithAdUnitID:@"ca-app-pub-3940256099942544/4411468910"];
+    self.interstitial.delegate=self;
+    GADRequest *request=[GADRequest request];
+    [self.interstitial loadRequest:request];
+    return self.interstitial;
+}
+-(void)interstitialDidDismissScreen:(GADInterstitial *)ad
+{
+    self.interstitial=[self setInterstitial];
+}
+
 
 @end
